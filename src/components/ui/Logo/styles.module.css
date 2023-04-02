@@ -1,0 +1,8 @@
+.logo {
+    @apply flex items-center gap-1
+}
+
+.logoText {
+    text-shadow: 0 0 3px var(--primary);
+    @apply text-xl
+}

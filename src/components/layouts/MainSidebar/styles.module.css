@@ -1,0 +1,15 @@
+.sidebar {
+    @apply px-[28px] pr-[76px] py-[22px] flex flex-col gap-[20px] border-r-[1px] border-primary-translucent
+}
+
+.navigationItems {
+    @apply flex flex-col gap-[13px]
+}
+
+.link {
+    @apply flex gap-[11px] text-xs items-center font-[600]
+}
+
+.linkIcon {
+    @apply w-[20px] aspect-square
+}

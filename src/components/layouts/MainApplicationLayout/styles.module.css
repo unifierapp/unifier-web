@@ -1,0 +1,7 @@
+.container {
+    @apply flex h-full w-full
+}
+
+.mainContainer {
+    @apply flex-1 flex-col flex
+}
