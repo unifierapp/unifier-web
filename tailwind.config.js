@@ -7,7 +7,8 @@ module.exports = {
         background: "var(--background)",
         primary: "var(--primary)",
         "primary-translucent": "var(--primary-translucent)",
-        warning: "var(--warning)"
+        warning: "var(--warning)",
+        secondary: "var(--secondary)"
       }
     },
   },

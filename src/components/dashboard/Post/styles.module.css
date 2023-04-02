@@ -1,0 +1,51 @@
+.postContainer {
+    @apply flex p-[16px] pr-[24px] gap-[12px] border-b-[1px] border-primary-translucent
+}
+
+.postContent {
+    @apply flex flex-col gap-[12px]
+}
+
+.postTextContent {
+    @apply gap-1
+}
+
+.profilePicture {
+    @apply w-[50px] aspect-square rounded-full self-start
+}
+
+.posterName {
+    @apply font-[600]
+}
+
+.topBar {
+    @apply flex
+}
+
+.posterInfo {
+    @apply flex gap-[8px] h-fit flex-1
+}
+
+.separator {
+    @apply aspect-square rounded-full bg-secondary w-1 self-center
+}
+
+.relativeTime {
+    @apply text-secondary
+}
+
+.attachmentGrid {
+    @apply grid grid-cols-1 gap-[8px]
+}
+
+.attachmentGrid_2Items {
+    @apply grid-cols-2 aspect-[16/9]
+}
+
+.attachmentGrid_3Items, .attachmentGrid_4Items {
+    @apply grid-cols-2 grid-rows-2
+}
+
+.stats {
+    @apply flex justify-between
+}

@@ -1,6 +1,7 @@
 import MainApplicationLayout from "@/components/layouts/MainApplicationLayout";
 import classes from "./page.module.css"
 import Button from "@/components/ui/Button";
+import PostViewer from "@/components/dashboard/PostViewer";
 
 export default function Dashboard() {
     return <MainApplicationLayout>
@@ -14,5 +15,6 @@ export default function Dashboard() {
                 <Button className={classes.logoutButton}>Logout</Button>
             </div>
         </section>
+        <PostViewer></PostViewer>
     </MainApplicationLayout>
 }

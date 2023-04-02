@@ -1,5 +1,5 @@
 .welcomeSection {
-    @apply px-[36px] py-[24px] flex gap-[16px]
+    @apply px-[36px] py-[24px] flex gap-[16px] border-b-[1px] border-primary-translucent
 }
 
 .welcomeSectionLeft {

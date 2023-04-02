@@ -3,5 +3,5 @@
 }
 
 .mainContainer {
-    @apply flex-1 flex-col flex
+    @apply flex-1 flex-col flex overflow-auto
 }
