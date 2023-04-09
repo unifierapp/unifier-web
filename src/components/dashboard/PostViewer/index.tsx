@@ -20,7 +20,7 @@ export default function PostViewer() {
                 url: attachment.src,
                 type: "image"
             }],
-            content: "Testing the Converge app rn",
+            content: "Testing the Converge pages rn",
             engagements: {
                 likes: 10,
                 reposts: 3,
@@ -42,7 +42,7 @@ export default function PostViewer() {
                 url: attachment.src,
                 type: "image"
             }],
-            content: "Testing the Converge app rn",
+            content: "Testing the Converge pages rn",
             engagements: {
                 likes: 10,
                 reposts: 3,

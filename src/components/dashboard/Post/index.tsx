@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
 import Attachment, {AttachmentProps} from "@/components/dashboard/Attachment";
 import EngagementInfo from "@/components/dashboard/Engagement";
+import PostRedirect from "@/components/dashboard/PostRedirect";
 
 dayjs.extend(relativeTime)
 
@@ -27,7 +28,8 @@ export interface PostProps {
             reposts: number,
             comments: number,
         }
-    }
+    },
+    directUrl?: string
 }
 
 export default function Post(props: PostProps) {
@@ -62,9 +64,14 @@ export default function Post(props: PostProps) {
                     })}
                 </div>
                 <nav className={classes.stats}>
-                    <EngagementInfo provider={props.provider} type={"comment"} count={props.postData.engagements.comments} isActive={false}></EngagementInfo>
-                    <EngagementInfo provider={props.provider} type={"repost"} count={props.postData.engagements.reposts} isActive={false}></EngagementInfo>
-                    <EngagementInfo provider={props.provider} type={"like"} count={props.postData.engagements.likes} isActive={false}></EngagementInfo>
+                    <EngagementInfo provider={props.provider} type={"comment"}
+                                    count={props.postData.engagements.comments} isActive={false}></EngagementInfo>
+                    <EngagementInfo provider={props.provider} type={"repost"} count={props.postData.engagements.reposts}
+                                    isActive={false}></EngagementInfo>
+                    <EngagementInfo provider={props.provider} type={"like"} count={props.postData.engagements.likes}
+                                    isActive={false}></EngagementInfo>
+                    <PostRedirect provider={props.provider} userName={props.providerUserInfo.userName}
+                                  postId={props.postData.providerPostId} directUrl={props.directUrl}></PostRedirect>
                 </nav>
             </div>
 

@@ -1,5 +1,5 @@
 import MainApplicationLayout from "@/components/layouts/MainApplicationLayout";
-import classes from "./page.module.css"
+import classes from "./index.module.css"
 import Button from "@/components/ui/Button";
 import PostViewer from "@/components/dashboard/PostViewer";
 
