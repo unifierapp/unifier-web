@@ -1,13 +1,13 @@
 .welcomeSection {
-    @apply px-[36px] py-[24px] flex gap-[16px] border-b-[1px] border-primary-translucent
+    @apply px-[28px] py-[30px] flex gap-[16px] border-b-[1px] border-primary-translucent
 }
 
 .welcomeSectionLeft {
-    @apply flex flex-col gap-[8px] flex-1
+    @apply flex flex-col gap-[1rem] flex-1 leading-[1.5rem]
 }
 
 .welcomeHeading {
-    @apply text-[2rem] font-[600]
+    @apply text-[1.25rem] font-[600]
 }
 
 .welcomeSectionRight {

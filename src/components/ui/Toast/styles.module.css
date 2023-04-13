@@ -1,0 +1,8 @@
+.toast {
+    @apply px-[10px] text-xs text-accent-green leading-[2em] before:rounded-[12px] before:bg-current relative before:absolute before:opacity-25 before:left-0 before:top-0 before:w-full before:h-full
+}
+
+.toastText {
+    @apply text-current;
+    filter: brightness(1.5) saturate(0.5);
+}

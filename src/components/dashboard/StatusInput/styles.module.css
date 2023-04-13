@@ -1,0 +1,28 @@
+.inputContainer {
+    @apply flex items-start p-[16px] pr-[16px] gap-[12px] border-b-[1px] border-primary-translucent
+}
+
+.profilePicture {
+    @apply rounded-[50%] w-[48px] aspect-square
+}
+
+.label {
+    @apply w-full cursor-text h-full;
+    /* Half the image height minus its own line height, so that the placeholder line aligns with the center of the empty input */
+    padding-top: calc(24px - 0.625rem);
+}
+
+.textareaContainer {
+    @apply w-full relative self-stretch min-h-full cursor-text;
+}
+
+.textarea {
+    @apply bg-transparent resize-none outline-0 w-full overflow-hidden absolute leading-[1.25rem];
+}
+
+.textarea::placeholder {
+}
+
+.textareaContainer {
+
+}

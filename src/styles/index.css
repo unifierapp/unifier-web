@@ -1,19 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    --background: #0D0D0D;
-    --primary: white;
-    --primary-translucent: #fff3;
-    --warning: #BF4D4D;
-    --secondary: #536471;
 }
 
 html {
-    @apply h-full w-full bg-background
+    @apply h-full w-full bg-background;
+    font-family: "Inter", sans-serif;
 }
 
 body {
     @apply h-full w-full overflow-hidden text-primary
+}
+
+#__next {
+    @apply h-full w-full
 }

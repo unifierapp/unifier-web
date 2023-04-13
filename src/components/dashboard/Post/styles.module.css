@@ -31,7 +31,7 @@
 }
 
 .relativeTime {
-    @apply text-secondary
+    @apply text-tertiary
 }
 
 .attachmentGrid {
