@@ -1,0 +1,15 @@
+.container {
+    @apply flex flex-col gap-3 max-w-full w-[18.75rem]
+}
+
+.heading {
+    @apply font-[700] text-xl leading-6 mb-3
+}
+
+.topFields {
+    @apply flex flex-col gap-3
+}
+
+.oAuthButton {
+    @apply flex items-start text-secondary px-[16px] py-[12px] font-[400]
+}

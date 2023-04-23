@@ -13,6 +13,7 @@ export interface PostProps {
         displayName: string,
         userId: string,
     },
+    isResolved: boolean,
     provider: string,
     providerUserInfo: {
         userName: string,

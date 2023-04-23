@@ -10,9 +10,11 @@ module.exports = {
         warning: "#BF4D4D",
         secondary: "#8F8F8F",
         tertiary: "#536471",
+        placeholder: "#AFAFAF",
         "accent-green": "#77FF54",
         "secondary-background": "#1F1F1F",
         "accent-orange": "#FF7A1A",
+        "form-border": "#3C3E43",
       }
     },
   },

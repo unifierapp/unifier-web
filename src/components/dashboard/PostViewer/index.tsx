@@ -12,7 +12,7 @@ export default function PostViewer() {
     })
 
     return <section>
-        <Post postId={"oof"} postData={{
+        <Post isResolved={false} postId={"oof"} postData={{
             attachments: [{
                 url: attachment.src,
                 type: "image"
@@ -34,7 +34,7 @@ export default function PostViewer() {
         }} providerUserInfo={{
             userName: "khanhtncva"
         }}></Post>
-        <Post postId={"oof"} postData={{
+        <Post isResolved={true} postId={"oof"} postData={{
             attachments: [{
                 url: attachment.src,
                 type: "image"

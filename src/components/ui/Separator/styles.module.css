@@ -1,0 +1,7 @@
+.separator {
+    @apply w-full px-[12px];
+}
+
+.separatorInner {
+    @apply h-[1.5px] bg-form-border rounded-full w-full
+}
