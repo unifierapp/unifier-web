@@ -7,6 +7,8 @@ export interface SmallFormFieldProps {
     icon: { src: string },
     type?: string,
     name?: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 const SmallFormField = React.forwardRef<HTMLInputElement, SmallFormFieldProps>(function SmallFormField(props, ref) {
@@ -14,7 +16,7 @@ const SmallFormField = React.forwardRef<HTMLInputElement, SmallFormFieldProps>(f
     return <div className={classes.container}>
         {props.label ? <label htmlFor={id}>{props.label}</label> : null}
         <div className={classes.inputContainer}>
-            <input name={props.name} className={classes.input} type={props.type} placeholder={props.placeholder} ref={ref} id={id}></input>
+            <input onBlur={props.onBlur} onChange={props.onChange} name={props.name} className={classes.input} type={props.type} placeholder={props.placeholder} ref={ref} id={id}></input>
             <img src={props.icon.src} alt={props.label} className={classes.icon}/>
         </div>
     </div>

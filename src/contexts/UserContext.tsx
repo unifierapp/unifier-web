@@ -18,8 +18,9 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     }, [loaded]);
 
     async function load() {
-        const user = (await api.get<IUser | null>("/users/current")).data;
-        setUser(user);
+        // const user = (await api.get<IUser | null>("/users/current")).data;
+        setLoaded(true);
+        // setUser(user);
     }
 
     function refresh() {
@@ -29,5 +30,7 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     return <UserContext.Provider value={{
         refresh,
         user,
-    }}></UserContext.Provider>
+    }}>
+        {props.children}
+    </UserContext.Provider>
 }
