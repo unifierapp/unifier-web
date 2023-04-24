@@ -5,20 +5,23 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import Attachment, {AttachmentProps} from "@/components/dashboard/Attachment";
 import EngagementInfo from "@/components/dashboard/Engagement";
 import PostRedirect from "@/components/dashboard/PostRedirect";
+import HTMLReactParser from "html-react-parser";
 
 dayjs.extend(relativeTime)
 
 export interface PostProps {
-    userInfo: {
+    connectionInfo: {
         displayName: string,
-        userId: string,
+        connectionId?: string,
     },
     isResolved: boolean,
     provider: string,
     providerUserInfo: {
-        userName: string,
+        userName: string;
+        id: string;
+        displayName: string;
+        profileImageUrl: string;
     },
-    postId: string,
     postData?: {
         providerPostId: string,
         lastUpdatedAt: Date,
@@ -45,18 +48,18 @@ export default function Post(props: PostProps) {
         const attachmentClassName = attachmentClassNames.join(" ");
 
         return <article className={classes.postContainer}>
-            <img src={posterIcon.src} alt={"Poster icon"} className={classes.profilePicture}></img>
+            <img src={props.providerUserInfo.profileImageUrl} alt={"Poster icon"} className={classes.profilePicture}></img>
             <div className={classes.postContent}>
                 <div className={classes.postTextContent}>
                     <div className={classes.topBar}>
                         <div className={classes.posterInfo}>
-                            <span className={classes.posterName}>{props.userInfo.displayName}</span>
+                            <span className={classes.posterName}>{props.connectionInfo.displayName}</span>
                             <div className={classes.separator}></div>
                             <span className={classes.relativeTime}>{relativeTime}</span>
                         </div>
                     </div>
                     <p>
-                        {props.postData.content}
+                        {HTMLReactParser(props.postData.content)}
                     </p>
                 </div>
                 <div className={attachmentClassName}>
@@ -78,4 +81,5 @@ export default function Post(props: PostProps) {
 
         </article>
     }
+    return null;
 }

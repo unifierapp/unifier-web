@@ -1,60 +1,39 @@
 "use client";
 import React from "react";
 import Post from "@/components/dashboard/Post";
-import attachment from "@/debug/attachment.png"
+import api from "@/helpers/api";
+import {PostStream, PostStreamCluster} from "@/logic/PostStream";
+import InfiniteScroller from "react-infinite-scroller";
+import classes from "./styles.module.css";
 
 export default function PostViewer() {
-    const [{posts}, setPosts] = React.useState<{ posts: Map<string, any> }>({posts: new Map()});
+    const [{streamCluster}, setStreamCluster] = React.useState<{ streamCluster: PostStreamCluster }>({streamCluster: new PostStreamCluster()});
+    const sectionContainerRef = React.useRef<HTMLElement>(null);
+    async function fetchAccounts() {
+        const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);
+        accounts.forEach(account => streamCluster.addStream(new PostStream(account)));
+    }
 
-    const postElements = [];
-    postElements.forEach(([key, entity]) => {
+    async function update(mode = "newest") {
+        streamCluster.update(mode).then(() => {
+            setStreamCluster({streamCluster});
+        });
+    }
 
-    })
+    React.useEffect(() => {
+        fetchAccounts().then(() => update().then())
+    }, []);
 
-    return <section>
-        <Post isResolved={false} postId={"oof"} postData={{
-            attachments: [{
-                url: attachment.src,
-                type: "image"
-            }, {
-                url: attachment.src,
-                type: "image"
-            }],
-            content: "Testing the Converge pages rn",
-            engagements: {
-                likes: 10,
-                reposts: 3,
-                comments: 4,
-            },
-            lastUpdatedAt: new Date(Date.now() - 2000),
-            providerPostId: "9934995"
-        }} provider={"twitter"} userInfo={{
-            userId: "foofoo",
-            displayName: "Khánh"
-        }} providerUserInfo={{
-            userName: "khanhtncva"
-        }}></Post>
-        <Post isResolved={true} postId={"oof"} postData={{
-            attachments: [{
-                url: attachment.src,
-                type: "image"
-            }, {
-                url: attachment.src,
-                type: "image"
-            }],
-            content: "Testing the Converge pages rn",
-            engagements: {
-                likes: 10,
-                reposts: 3,
-                comments: 4,
-            },
-            lastUpdatedAt: new Date(Date.now() - 2000),
-            providerPostId: "9934995"
-        }} provider={"twitter"} userInfo={{
-            userId: "foofoo",
-            displayName: "Khánh"
-        }} providerUserInfo={{
-            userName: "khanhtncva"
-        }}></Post>
+    const posts = streamCluster.posts;
+
+    return <section className={classes.postViewer} ref={sectionContainerRef}>
+        <InfiniteScroller loadMore={() => {
+            update("older");
+        }} hasMore={posts.length > 0} useWindow={false} getScrollParent={() => sectionContainerRef.current}>
+            {
+                posts.map(postProps => {
+                    return <Post {...postProps}></Post>;
+                })}
+        </InfiniteScroller>
     </section>
 }

@@ -6,6 +6,19 @@ export function domainToUrl(domain: string): string {
     try {
         return new URL(domain).toString();
     } catch {
-        return `https://${domain}`;
+    }
+    try {
+        const urlFactors = domain.split(".");
+        if (!urlFactors.every(factor => {
+            const result = /^\w+$/.test(factor)
+            console.log(factor, result);
+            return result;
+        })) {
+            return "";
+        }
+        const url = `https://${domain}`;
+        return new URL(url).toString();
+    } catch {
+        return "";
     }
 }

@@ -20,3 +20,11 @@ body {
 #__next {
     @apply h-full w-full
 }
+
+::-webkit-scrollbar {
+    @apply appearance-none w-[8px] h-[8px]
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full
+}

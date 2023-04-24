@@ -1,0 +1,3 @@
+.sidebar {
+    @apply bg-secondary-background w-[300px]
+}

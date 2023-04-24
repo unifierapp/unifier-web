@@ -1,10 +1,13 @@
-"use client";
 import React from "react";
 import api from "@/helpers/api";
 
-export const UserContext = React.createContext<{ user: IUser | null, refresh: () => void }>({
+export const UserContext = React.createContext<{ user: IUser | null, refresh: () => void, loaded: boolean, onboard: () => void }>({
     user: null,
-    refresh() {},
+    loaded: false,
+    refresh() {
+    },
+    onboard() {
+    }
 });
 
 export function UserWrapper(props: React.PropsWithChildren<{}>) {
@@ -18,9 +21,16 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     }, [loaded]);
 
     async function load() {
-        // const user = (await api.get<IUser | null>("/users/current")).data;
+        const user = (await api.get<IUser | null>("/user/current")).data;
         setLoaded(true);
-        // setUser(user);
+        setUser(user);
+    }
+
+    function onboard() {
+        if (user) {
+            user.onboarded = true;
+            setUser(user);
+        }
     }
 
     function refresh() {
@@ -29,7 +39,9 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
 
     return <UserContext.Provider value={{
         refresh,
+        loaded,
         user,
+        onboard,
     }}>
         {props.children}
     </UserContext.Provider>

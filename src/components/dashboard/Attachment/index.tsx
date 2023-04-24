@@ -1,7 +1,7 @@
 import classes from "./styles.module.css";
 
 export interface AttachmentProps {
-    type: "image" | "video",
+    type: string,
     url: string,
     alt?: string
 }

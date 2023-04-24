@@ -1,13 +1,8 @@
-"use client";
+import PrivateRouteComponent from "@/components/ui/PrivateRoute/_index";
+import dynamic from "next/dynamic";
 
-import React, {PropsWithChildren} from "react";
-import {UserContext} from "@/contexts/UserContext";
-import {redirect} from "next/navigation";
+const PrivateRoute = dynamic(async () => PrivateRouteComponent, {
+    ssr: false
+});
 
-export default function PrivateRoute(props: PropsWithChildren<{}>) {
-    const user = React.useContext(UserContext);
-    if (!user) {
-        redirect("/login");
-    }
-    return props.children;
-}
+export default PrivateRoute;

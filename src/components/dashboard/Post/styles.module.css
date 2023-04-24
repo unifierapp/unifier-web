@@ -3,7 +3,7 @@
 }
 
 .postContent {
-    @apply flex flex-col gap-[12px]
+    @apply flex flex-col gap-[12px] w-full
 }
 
 .postTextContent {

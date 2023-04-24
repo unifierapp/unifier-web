@@ -8,11 +8,26 @@ import mail from "@/icons/mail.svg";
 import SmallField from "@/components/ui/inputs/SmallFormField";
 import React from "react";
 import PrivateRoute from "@/components/ui/PrivateRoute";
+import api from "@/helpers/api";
+import {UserContext} from "@/contexts/UserContext";
+import {useRouter} from "next/navigation";
 
 export default function Onboarding() {
     const [mastodonEndpoint, setMastodonEndpoint] = React.useState("");
     const mastodonAuthUrl = new URL(getBackendUrl("/auth/mastodon"));
     mastodonAuthUrl.searchParams.set("endpoint", mastodonEndpoint);
+    const {onboard} = React.useContext(UserContext);
+    const router = useRouter();
+
+    async function finishOnboarding(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        try {
+            await api.post("/user/finish_onboarding");
+            onboard();
+            router.push("/dashboard");
+        } catch (exc) {
+        }
+    }
 
     return <PrivateRoute>
         <FullScreenOverlayWithCenteredItem>
@@ -32,7 +47,7 @@ export default function Onboarding() {
                 <OAuthLink href={getBackendUrl("/auth/instagram")} icon={google}>Click to connect Instagram</OAuthLink>
                 <OAuthLink href={getBackendUrl("/auth/facebook")} icon={google}>Click to connect Facebook</OAuthLink>
                 <Separator></Separator>
-                <FormLink href={"/dashboard"}>Continue</FormLink>
+                <FormLink href={"/dashboard"} onClick={finishOnboarding}>Continue</FormLink>
             </div>
         </FullScreenOverlayWithCenteredItem>
     </PrivateRoute>;

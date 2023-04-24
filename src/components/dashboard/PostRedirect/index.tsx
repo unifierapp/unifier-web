@@ -20,7 +20,8 @@ export default function PostRedirect(props: PostRedirectProps) {
         }
     }
 
-    const data = mapping[props.provider]
+    const data = mapping[props.provider];
+    if (!data) return <div></div>
     return <a href={data.url}>
         <img src={data.icon.src} alt={`View post on ${props.provider.toUpperCase()}`}></img>
     </a>
