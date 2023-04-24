@@ -1,3 +1,12 @@
-.button {
+.link {
     @apply px-[16px] py-[8px] text-sm rounded-[8px] border-primary-translucent border-[1px] font-[600]
+}
+
+.oAuthLink {
+    @apply flex items-center text-secondary px-[16px] py-[12px] font-[400] border-2 border-form-border gap-[10px]
+}
+
+.formLink {
+    @apply font-[400] border-[2px] border-form-border justify-center text-center
+
 }

@@ -1,3 +1,7 @@
 .button {
     @apply px-[16px] py-[8px] text-sm rounded-[8px] border-primary-translucent border-[1px] font-[600]
 }
+
+.formButton {
+    @apply font-[400] border-[2px] border-form-border
+}
