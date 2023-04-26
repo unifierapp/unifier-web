@@ -2,9 +2,9 @@ import posterIcon from "@/debug/posterIcon.jpg"
 import classes from "./styles.module.css"
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
-import Attachment, {AttachmentProps} from "@/components/dashboard/Attachment";
-import EngagementInfo from "@/components/dashboard/Engagement";
-import PostRedirect from "@/components/dashboard/PostRedirect";
+import Attachment, {AttachmentProps} from "@/components/specific/dashboard/Attachment";
+import EngagementInfo from "@/components/specific/dashboard/Engagement";
+import PostRedirect from "@/components/specific/dashboard/PostRedirect";
 import HTMLReactParser from "html-react-parser";
 
 dayjs.extend(relativeTime)

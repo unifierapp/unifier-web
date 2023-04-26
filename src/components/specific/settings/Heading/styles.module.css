@@ -1,0 +1,7 @@
+.primaryHeading {
+    @apply font-[700] text-xl leading-6 mb-4
+}
+
+.secondaryHeading {
+    @apply font-[700] text-xl leading-6
+}

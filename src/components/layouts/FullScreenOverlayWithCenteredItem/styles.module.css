@@ -1,3 +1,7 @@
 .overlay {
-    @apply fixed w-full h-full bg-background flex relative justify-center items-center
+    @apply fixed w-full h-full flex justify-center items-center top-0 left-0
+}
+
+.opaque {
+    @apply bg-background
 }

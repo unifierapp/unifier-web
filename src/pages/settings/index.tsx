@@ -1,14 +1,22 @@
-import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
-import OnboardingWrapper from "@/components/onboarding/OnboardingWrapper";
-import classes from "@/pages/dashboard/index.module.css";
-import StatusInput from "@/components/dashboard/StatusInput";
-import PostViewer from "@/components/dashboard/PostViewer";
-import MainApplicationLayout from "@/components/layouts/MainApplicationLayout";
 import React from "react";
-import Dashboard from "@/pages/dashboard";
+import {NextPageWithLayout} from "@/pages/_app";
+import SettingsLayout from "@/components/specific/settings/Layout";
+import DashboardLayout from "@/components/specific/dashboard/Layout";
+import {useRouter} from "next/navigation";
 
-export default function Settings() {
-    return <><Dashboard></Dashboard>
-        <FullScreenOverlayWithCenteredItem></FullScreenOverlayWithCenteredItem></>
-        ;
+const Settings: NextPageWithLayout = function () {
+    const router = useRouter();
+    React.useEffect(() => {
+        router.replace("/settings/account");
+    })
+    return <></>;
+}
+export default Settings;
+
+Settings.getLayout = function (page) {
+    return <DashboardLayout>
+        <SettingsLayout>
+            {page}
+        </SettingsLayout>
+    </DashboardLayout>
 }

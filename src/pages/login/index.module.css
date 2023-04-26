@@ -2,7 +2,7 @@
     @apply flex flex-col gap-3 max-w-full w-[18.75rem]
 }
 
-.heading {
+.primaryHeading {
     @apply font-[700] text-xl leading-6 mb-3
 }
 

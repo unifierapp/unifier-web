@@ -1,4 +1,4 @@
-import {PostProps} from "@/components/dashboard/Post";
+import {PostProps} from "@/components/specific/dashboard/Post";
 import api from "@/helpers/api";
 
 export class PostStream {

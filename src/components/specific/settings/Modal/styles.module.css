@@ -1,0 +1,3 @@
+.modal {
+    @apply overflow-hidden flex rounded-[8px] bg-background border-form-border border-[2px] w-[90%] h-[90%]
+}

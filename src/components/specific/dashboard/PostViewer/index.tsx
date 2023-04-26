@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Post from "@/components/dashboard/Post";
+import Post from "@/components/specific/dashboard/Post";
 import api from "@/helpers/api";
 import {PostStream, PostStreamCluster} from "@/logic/PostStream";
 import InfiniteScroller from "react-infinite-scroller";
