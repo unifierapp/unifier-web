@@ -11,7 +11,7 @@ export default function DashboardLayout(props: React.PropsWithChildren) {
             <section className={classes.welcomeSection}>
                 <div className={classes.welcomeSectionLeft}>
                     <h1 className={classes.welcomeHeading}>Welcome back,</h1>
-                    <p>Let's see what the people you follow are up to today!</p>
+                    <p>Let&apos;s see what the people you follow are up to today!</p>
                 </div>
             </section>
             <StatusInput></StatusInput>
