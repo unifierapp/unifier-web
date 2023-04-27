@@ -33,7 +33,7 @@ export default function Onboarding() {
         <FullScreenOverlayWithCenteredItem>
             <div className={classes.container}>
                 <h1 className={classes.heading}>Log In</h1>
-                <p>Connect your accounts to Unified and start experiencing the power today.</p>
+                <p>Connect your accounts to Unifier and start experiencing the power today.</p>
                 <OAuthLink href={getBackendUrl("/auth/twitter")} icon={google}>Click to connect Twitter</OAuthLink>
                 <OAuthLink href={getBackendUrl("/auth/twitch")} icon={google}>Click to connect Twitch</OAuthLink>
                 <SmallField icon={mail} name={"endpoint"} type={"url"}
