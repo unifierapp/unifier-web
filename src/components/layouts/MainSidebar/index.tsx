@@ -108,7 +108,7 @@ function SidebarAccount() {
     return <Link href={"/profile"} className={`${classes.link} ${classes.account}`}>
         <img src={test.src} alt={"Profile picture"}
              className={`${classes.profilePicture}`}/>
-        <span className={classes.linkDescription}>{"Khanh Tran"}</span>
+        <span className={classes.linkDescription}>{"username"}</span>
     </Link>;
 }
 
