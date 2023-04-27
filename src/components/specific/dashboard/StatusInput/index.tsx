@@ -1,5 +1,5 @@
 import classes from "./styles.module.css";
-import test from "@/debug/posterIcon.jpg";
+import test from "@/debug/posterIcon.png";
 import React from "react";
 
 export default function StatusInput() {

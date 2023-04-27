@@ -7,7 +7,7 @@ import settings from "@/icons/settings.svg";
 import changelogs from "@/icons/announcements.svg";
 import download from "@/icons/download.svg";
 import logout from "@/icons/logout.svg";
-import test from "@/debug/posterIcon.jpg";
+import test from "@/debug/posterIcon.png";
 import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
