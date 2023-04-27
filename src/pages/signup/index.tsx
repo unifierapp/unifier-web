@@ -14,7 +14,7 @@ export default function Signup() {
             <h1 className={classes.heading}>Sign up</h1>
             <fieldset className={classes.topFields}>
                 <SmallField label={"Username"} icon={mail} name={"username"} type={"text"}
-                            placeholder={"jeremy"}></SmallField>
+                            placeholder={"username"}></SmallField>
                 <SmallField label={"Email"} icon={mail} name={"email"} type={"email"}
                             placeholder={"example@example.com"}></SmallField>
                 <SmallField label={"Password"} icon={lock} name={"password"} type={"password"}
