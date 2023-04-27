@@ -1,4 +1,3 @@
-import posterIcon from "@/debug/posterIcon.jpg"
 import classes from "./styles.module.css"
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
@@ -58,9 +57,9 @@ export default function Post(props: PostProps) {
                             <span className={classes.relativeTime}>{relativeTime}</span>
                         </div>
                     </div>
-                    <p>
+                    <div>
                         {HTMLReactParser(props.postData.content)}
-                    </p>
+                    </div>
                 </div>
                 <div className={attachmentClassName}>
                     {attachments.map((item, index) => {

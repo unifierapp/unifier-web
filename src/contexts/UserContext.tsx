@@ -1,18 +1,20 @@
 import React from "react";
 import api from "@/helpers/api";
 
-export const UserContext = React.createContext<{ user: IUser | null, refresh: () => void, loaded: boolean, onboard: () => void }>({
+export const UserContext = React.createContext<{ user: IUser | null, accounts: IAccount[], refresh: () => void, loaded: boolean, onboard: () => void }>({
     user: null,
     loaded: false,
+    accounts: [],
     refresh() {
     },
     onboard() {
-    }
+    },
 });
 
 export function UserWrapper(props: React.PropsWithChildren<{}>) {
     const [loaded, setLoaded] = React.useState(false);
     const [user, setUser] = React.useState<IUser | null>(null);
+    const [accounts, setAccounts] = React.useState<IAccount[]>([]);
 
     React.useEffect(() => {
         if (!loaded) {
@@ -22,7 +24,9 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
 
     async function load() {
         const user = (await api.get<IUser | null>("/user/current")).data;
+        const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);
         setLoaded(true);
+        setAccounts(accounts);
         setUser(user);
     }
 
@@ -34,11 +38,12 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     }
 
     function refresh() {
-        setLoaded(false);
+        load().then();
     }
 
     return <UserContext.Provider value={{
         refresh,
+        accounts,
         loaded,
         user,
         onboard,

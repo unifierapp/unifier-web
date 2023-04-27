@@ -9,6 +9,9 @@ import facebook from "@/icons/providers/facebook.svg";
 import instagram from "@/icons/providers/instagram.svg";
 import {capitalize} from "@/helpers/string";
 import classes from "./styles.module.css";
+import {UserContext} from "@/contexts/UserContext";
+import axios from "axios";
+import api from "@/helpers/api";
 
 const icon_mapping: Record<string, { src: string }> = {
     twitter: twitter,
@@ -21,8 +24,23 @@ const icon_mapping: Record<string, { src: string }> = {
 export function OAuthLink({
                               provider, endpoint, decentralized = false, children
                           }: PropsWithChildren<{ provider: string, endpoint?: string, decentralized?: boolean }>) {
-    const linked = false;
+    const {accounts, refresh} = React.useContext(UserContext);
+    const lookup = {
+        linked: false,
+        displayName: "",
+    }
+    for (let account of accounts) {
+        if (account.provider === provider) {
+            lookup.linked = true;
+            lookup.displayName = account.displayName;
+        }
+    }
     const icon = icon_mapping[provider] ?? add;
+
+    async function runUnlink(url: string) {
+        await api.delete(url);
+        refresh();
+    }
 
     if (decentralized) {
         const linkInner = <>
@@ -32,20 +50,25 @@ export function OAuthLink({
         if (!endpoint) {
             return <Link href={"#"} className={classes.oAuthLink}>{linkInner}</Link>;
         }
-        const url = new URL(getBackendUrl(`/api/auth/${provider}`));
+        const url = new URL(getBackendUrl(`/auth/${provider}`));
         url.searchParams.set("endpoint", endpoint);
         return <Link href={url.toString()} className={classes.oAuthLink}>
             {linkInner}
         </Link>
-    } else if (!linked) {
-        return <Link href={getBackendUrl(`/api/auth/${provider}`)} className={classes.oAuthLink}>
+    } else if (!lookup.linked) {
+        return <Link href={getBackendUrl(`/auth/${provider}`)} className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
             Link your {capitalize(provider)} account
         </Link>
     } else {
-        return <Link href={getBackendUrl(`/provider/unlink/${provider}`)} className={classes.oAuthLink}>
+        const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
+        unlinkUrl.searchParams.set("provider", provider);
+        return <Link href={unlinkUrl.toString()} onClick={(e) => {
+            e.preventDefault();
+            runUnlink(unlinkUrl.toString()).then();
+        }} className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
-            Unlink your {capitalize(provider)} account
+            <span>Signed in as {lookup.displayName}</span>
         </Link>
     }
 }
