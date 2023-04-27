@@ -18,11 +18,11 @@ export default function PostRedirect(props: PostRedirectProps) {
             url: props.directUrl ?? "",
             icon: linkedin
         }
-    }
+    };
 
     const data = mapping[props.provider];
-    if (!data) return <div></div>
+    if (!data) return <div></div>;
     return <a href={data.url}>
         <img src={data.icon.src} alt={`View post on ${props.provider.toUpperCase()}`}></img>
-    </a>
+    </a>;
 }

@@ -1,18 +1,18 @@
 import Toast from "@/components/ui/Toast";
 import Logo from "@/components/ui/Logo";
 import feed from "@/icons/feed.svg";
-import profile from "@/icons/profile.svg"
-import messages from "@/icons/messages.svg"
-import settings from "@/icons/settings.svg"
+import profile from "@/icons/profile.svg";
+import messages from "@/icons/messages.svg";
+import settings from "@/icons/settings.svg";
 import changelogs from "@/icons/announcements.svg";
 import download from "@/icons/download.svg";
 import logout from "@/icons/logout.svg";
-import test from "@/debug/posterIcon.jpg"
+import test from "@/debug/posterIcon.jpg";
 import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
 import {usePathname} from 'next/navigation';
-import classes from "./styles.module.css"
+import classes from "./styles.module.css";
 
 interface SidebarLinkProps {
     href: string,
@@ -65,7 +65,7 @@ const miscLinks: SidebarLinkProps[] = [
         icon: logout,
         description: "Log Out",
     },
-]
+];
 
 
 function SidebarLink(props: SidebarLinkProps) {
@@ -89,19 +89,19 @@ function SidebarLink(props: SidebarLinkProps) {
             <span className={classes.linkDescription}>{props.description}</span>
             {toast}
         </Link>
-    </li>
+    </li>;
 }
 
 function Separator() {
-    return <div className={classes.separator}></div>
+    return <div className={classes.separator}></div>;
 }
 
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
         {props.links.map((info) => {
-            return <SidebarLink {...info} key={info.href}></SidebarLink>
+            return <SidebarLink {...info} key={info.href}></SidebarLink>;
         })}
-    </ul>
+    </ul>;
 }
 
 function SidebarAccount() {
@@ -109,7 +109,7 @@ function SidebarAccount() {
         <img src={test.src} alt={"Profile picture"}
              className={`${classes.profilePicture}`}/>
         <span className={classes.linkDescription}>{"Khanh Tran"}</span>
-    </Link>
+    </Link>;
 }
 
 
@@ -123,6 +123,6 @@ export default function MainSidebar() {
         <Separator></Separator>
         <SidebarLinks links={miscLinks}></SidebarLinks>
         <SidebarAccount></SidebarAccount>
-    </nav>
+    </nav>;
 }
 

@@ -1,12 +1,12 @@
-import classes from "./styles.module.css"
+import classes from "./styles.module.css";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime"
+import relativeTime from "dayjs/plugin/relativeTime";
 import Attachment, {AttachmentProps} from "@/components/specific/dashboard/Attachment";
 import EngagementInfo from "@/components/specific/dashboard/Engagement";
 import PostRedirect from "@/components/specific/dashboard/PostRedirect";
 import HTMLReactParser from "html-react-parser";
 
-dayjs.extend(relativeTime)
+dayjs.extend(relativeTime);
 
 export interface PostProps {
     connectionInfo: {
@@ -42,7 +42,7 @@ export default function Post(props: PostProps) {
         const attachments = props.postData.attachments;
         const attachmentClassNames = [classes.attachmentGrid];
         if (attachments.length === 2) {
-            attachmentClassNames.push(classes.attachmentGrid_2Items)
+            attachmentClassNames.push(classes.attachmentGrid_2Items);
         }
         const attachmentClassName = attachmentClassNames.join(" ");
 
@@ -63,7 +63,7 @@ export default function Post(props: PostProps) {
                 </div>
                 <div className={attachmentClassName}>
                     {attachments.map((item, index) => {
-                        return <Attachment {...item} key={index}></Attachment>
+                        return <Attachment {...item} key={index}></Attachment>;
                     })}
                 </div>
                 <nav className={classes.stats}>
@@ -78,7 +78,7 @@ export default function Post(props: PostProps) {
                 </nav>
             </div>
 
-        </article>
+        </article>;
     }
     return null;
 }

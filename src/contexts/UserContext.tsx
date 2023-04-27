@@ -49,5 +49,5 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
         onboard,
     }}>
         {props.children}
-    </UserContext.Provider>
+    </UserContext.Provider>;
 }

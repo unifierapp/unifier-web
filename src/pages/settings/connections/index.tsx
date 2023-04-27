@@ -29,7 +29,7 @@ const ConnectionSettings: NextPageWithLayout = function () {
             <MastodonLinkAccountForm></MastodonLinkAccountForm>
         </Section>
     </div>;
-}
+};
 export default ConnectionSettings;
 
 ConnectionSettings.getLayout = function (page) {
@@ -37,5 +37,5 @@ ConnectionSettings.getLayout = function (page) {
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>
-}
+    </DashboardLayout>;
+};

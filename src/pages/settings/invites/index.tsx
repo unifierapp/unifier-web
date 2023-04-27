@@ -17,7 +17,7 @@ const InviteSettings: NextPageWithLayout = function () {
             <ButtonFrame><Button>Send invite</Button></ButtonFrame>
         </Section>
     </div>;
-}
+};
 export default InviteSettings;
 
 InviteSettings.getLayout = function (page) {
@@ -25,5 +25,5 @@ InviteSettings.getLayout = function (page) {
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>
-}
+    </DashboardLayout>;
+};

@@ -1,5 +1,5 @@
-import classes from "./styles.module.css"
-import test from "@/debug/posterIcon.jpg"
+import classes from "./styles.module.css";
+import test from "@/debug/posterIcon.jpg";
 import React from "react";
 
 export default function StatusInput() {
@@ -35,5 +35,5 @@ export default function StatusInput() {
                       ref={textareaRef}></textarea>
             </div>
         </label>
-    </form>
+    </form>;
 }

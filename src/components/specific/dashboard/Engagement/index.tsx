@@ -16,5 +16,5 @@ export default function EngagementInfo(props: EngagementInfoProps) {
     return <button className={classes.engagementInfo}>
         <img src={mapping[props.type].src} alt={props.type.toUpperCase()}/>
         <span>{props.count ?? 0}</span>
-    </button>
+    </button>;
 }

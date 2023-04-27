@@ -2,9 +2,9 @@ import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOv
 import SmallField from "@/components/ui/inputs/SmallFormField";
 import Separator from "@/components/ui/Separator";
 import lock from "@/icons/lock.svg";
-import mail from "@/icons/mail.svg"
+import mail from "@/icons/mail.svg";
 import classes from "./index.module.css";
-import google from "@/icons/providers/google.svg"
+import google from "@/icons/providers/google.svg";
 import  {FormButton} from "@/components/ui/Button";
 import {FormLink, OAuthLink} from "@/components/ui/Link";
 

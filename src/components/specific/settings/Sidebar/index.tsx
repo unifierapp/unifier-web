@@ -3,14 +3,14 @@ import profile from "@/icons/profile.svg";
 import eye from "@/icons/eye.svg";
 import paintbrush from "@/icons/paintbrush.svg";
 import squares from "@/icons/squares.svg";
-import chat from "@/icons/chat.svg"
+import chat from "@/icons/chat.svg";
 import money from "@/icons/money.svg";
 import voucher from "@/icons/voucher.svg";
 import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
 import {usePathname} from 'next/navigation';
-import classes from "./styles.module.css"
+import classes from "./styles.module.css";
 
 interface SidebarLinkProps {
     href: string,
@@ -63,7 +63,7 @@ const section2Links: SidebarLinkProps[] = [
         icon: chat,
         description: "Send feedback",
     },
-]
+];
 
 
 function SidebarLink(props: SidebarLinkProps) {
@@ -87,19 +87,19 @@ function SidebarLink(props: SidebarLinkProps) {
             <span className={classes.linkDescription}>{props.description}</span>
             {toast}
         </Link>
-    </li>
+    </li>;
 }
 
 function Separator() {
-    return <div className={classes.separator}></div>
+    return <div className={classes.separator}></div>;
 }
 
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
         {props.links.map((info) => {
-            return <SidebarLink {...info} key={info.href}></SidebarLink>
+            return <SidebarLink {...info} key={info.href}></SidebarLink>;
         })}
-    </ul>
+    </ul>;
 }
 
 
@@ -114,6 +114,6 @@ export default function Sidebar() {
         <SidebarLinks links={section1Links}></SidebarLinks>
         <Separator></Separator>
         <SidebarLinks links={section2Links}></SidebarLinks>
-    </nav>
+    </nav>;
 }
 

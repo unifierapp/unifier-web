@@ -1,4 +1,4 @@
-import classes from "./styles.module.css"
+import classes from "./styles.module.css";
 import React from "react";
 
 export default function Textarea() {
@@ -32,5 +32,5 @@ export default function Textarea() {
                       placeholder={"Write something to your friends..."}
                       ref={textareaRef}></textarea>
         </div>
-    </label>
+    </label>;
 }

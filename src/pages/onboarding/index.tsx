@@ -1,7 +1,7 @@
 import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
 import Separator from "@/components/ui/Separator";
 import classes from "./index.module.css";
-import google from "@/icons/providers/google.svg"
+import google from "@/icons/providers/google.svg";
 import {FormLink, OAuthLink} from "@/components/ui/Link";
 import {domainToUrl, getBackendUrl} from "@/helpers/url";
 import mail from "@/icons/mail.svg";

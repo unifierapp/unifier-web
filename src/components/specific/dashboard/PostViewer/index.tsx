@@ -21,7 +21,7 @@ export default function PostViewer() {
     }
 
     React.useEffect(() => {
-        fetchAccounts().then(() => update().then())
+        fetchAccounts().then(() => update().then());
     }, []);
 
     const posts = streamCluster.posts;
@@ -35,5 +35,5 @@ export default function PostViewer() {
                     return <Post {...postProps}></Post>;
                 })}
         </InfiniteScroller>
-    </section>
+    </section>;
 }

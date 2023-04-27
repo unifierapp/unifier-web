@@ -72,8 +72,8 @@ export class PostStream {
                     displayName: rawPost.provider_account.display_name,
                     profileImageUrl: rawPost.provider_account.profile_image_url,
                 }
-            }
-        })
+            };
+        });
     }
 }
 

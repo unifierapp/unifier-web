@@ -19,7 +19,7 @@ const SmallFormField = React.forwardRef<HTMLInputElement, SmallFormFieldProps>(f
             <input onBlur={props.onBlur} onChange={props.onChange} name={props.name} className={classes.input} type={props.type} placeholder={props.placeholder} ref={ref} id={id}></input>
             <img src={props.icon.src} alt={props.label} className={classes.icon}/>
         </div>
-    </div>
+    </div>;
 });
 
 export default SmallFormField;

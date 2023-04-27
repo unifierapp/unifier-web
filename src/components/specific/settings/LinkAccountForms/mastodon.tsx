@@ -14,5 +14,5 @@ export default function MastodonLinkAccountForm() {
             setEndpoint(value);
         }}></BigFormField>
         <OAuthLink provider={"mastodon"} decentralized={true} endpoint={endpoint}>Click to connect Mastodon</OAuthLink>
-    </InputAndButtonContainer>
+    </InputAndButtonContainer>;
 }

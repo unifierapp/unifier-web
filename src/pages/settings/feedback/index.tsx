@@ -18,7 +18,7 @@ const FeedbackDialog: NextPageWithLayout = function () {
             <ButtonFrame><Button>Send feedback</Button></ButtonFrame>
         </Section>
     </div>;
-}
+};
 export default FeedbackDialog;
 
 FeedbackDialog.getLayout = function (page) {
@@ -26,5 +26,5 @@ FeedbackDialog.getLayout = function (page) {
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>
-}
+    </DashboardLayout>;
+};

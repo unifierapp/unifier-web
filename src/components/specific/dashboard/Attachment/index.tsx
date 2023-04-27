@@ -7,8 +7,8 @@ export interface AttachmentProps {
 }
 export default function Attachment(props: AttachmentProps) {
     if (props.type === "image") {
-        return <img src={props.url} alt={props.alt} className={classes.attachment}/>
+        return <img src={props.url} alt={props.alt} className={classes.attachment}/>;
     } else {
-        return <video src={props.url} className={classes.attachment}/>
+        return <video src={props.url} className={classes.attachment}/>;
     }
 }

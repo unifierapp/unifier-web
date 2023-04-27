@@ -18,7 +18,7 @@ const AccountSettings: NextPageWithLayout = function () {
         </Section>
         <Section>
             <SecondaryHeading>Password</SecondaryHeading>
-            <p>Change your password by filling this form if you think it's not secure enough.</p>
+            <p>Change your password by filling this form if you think it&apos;s not secure enough.</p>
             <BigFormField placeholder={"Current password"} type={"password"} name={"old_password"}></BigFormField>
             <BigFormField placeholder={"New password"} type={"password"} name={"new_password"}></BigFormField>
             <BigFormField placeholder={"Confirm password"} type={"password"} name={"confirm_password"}></BigFormField>
@@ -30,7 +30,7 @@ const AccountSettings: NextPageWithLayout = function () {
             <ButtonFrame><Button>Delete account</Button></ButtonFrame>
         </Section>
     </div>;
-}
+};
 export default AccountSettings;
 
 AccountSettings.getLayout = function (page) {
@@ -38,5 +38,5 @@ AccountSettings.getLayout = function (page) {
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>
-}
+    </DashboardLayout>;
+};

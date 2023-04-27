@@ -8,9 +8,9 @@ const Settings: NextPageWithLayout = function () {
     const router = useRouter();
     React.useEffect(() => {
         router.replace("/settings/account");
-    })
+    });
     return <></>;
-}
+};
 export default Settings;
 
 Settings.getLayout = function (page) {
@@ -18,5 +18,5 @@ Settings.getLayout = function (page) {
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>
-}
+    </DashboardLayout>;
+};

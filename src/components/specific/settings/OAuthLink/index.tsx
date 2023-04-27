@@ -4,7 +4,7 @@ import {getBackendUrl} from "@/helpers/url";
 import add from "@/icons/add.svg";
 import twitter from "@/icons/providers/twitter.svg";
 import linkedin from "@/icons/providers/linkedin.svg";
-import mastodon from "@/icons/providers/mastodon.svg"
+import mastodon from "@/icons/providers/mastodon.svg";
 import facebook from "@/icons/providers/facebook.svg";
 import instagram from "@/icons/providers/instagram.svg";
 import {capitalize} from "@/helpers/string";
@@ -19,7 +19,7 @@ const icon_mapping: Record<string, { src: string }> = {
     mastodon: mastodon,
     facebook: facebook,
     instagram: instagram,
-}
+};
 
 export function OAuthLink({
                               provider, endpoint, decentralized = false, children
@@ -28,7 +28,7 @@ export function OAuthLink({
     const lookup = {
         linked: false,
         displayName: "",
-    }
+    };
     for (let account of accounts) {
         if (account.provider === provider) {
             lookup.linked = true;
@@ -46,7 +46,7 @@ export function OAuthLink({
         const linkInner = <>
             <img src={icon.src} alt={provider}/>
             Link a new {capitalize(provider)} account
-        </>
+        </>;
         if (!endpoint) {
             return <Link href={"#"} className={classes.oAuthLink}>{linkInner}</Link>;
         }
@@ -54,12 +54,12 @@ export function OAuthLink({
         url.searchParams.set("endpoint", endpoint);
         return <Link href={url.toString()} className={classes.oAuthLink}>
             {linkInner}
-        </Link>
+        </Link>;
     } else if (!lookup.linked) {
         return <Link href={getBackendUrl(`/auth/${provider}`)} className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
             Link your {capitalize(provider)} account
-        </Link>
+        </Link>;
     } else {
         const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
         unlinkUrl.searchParams.set("provider", provider);
@@ -69,6 +69,6 @@ export function OAuthLink({
         }} className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
             <span>Signed in as {lookup.displayName}</span>
-        </Link>
+        </Link>;
     }
 }

@@ -22,7 +22,7 @@ const BigFormField = React.forwardRef<HTMLInputElement, BigFormFieldProps>(funct
                    type={props.type} placeholder={props.placeholder} ref={ref} id={id}></input>
             {props.icon ? <img src={props.icon.src} alt={props.label} className={classes.icon}/> : <></>}
         </div>
-    </div>
+    </div>;
 });
 
 export default BigFormField;

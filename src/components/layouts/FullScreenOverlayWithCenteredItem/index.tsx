@@ -12,5 +12,5 @@ export default function FullScreenOverlayWithCenteredItem(props: PropsWithChildr
         }
     }}>
         {props.children}
-    </div>
+    </div>;
 }

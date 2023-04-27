@@ -1,7 +1,7 @@
 import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
 import SmallField from "@/components/ui/inputs/SmallFormField";
 import Separator from "@/components/ui/Separator";
-import mail from "@/icons/mail.svg"
+import mail from "@/icons/mail.svg";
 import classes from "./index.module.css";
 import {FormButton} from "@/components/ui/Button";
 
