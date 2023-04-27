@@ -1,0 +1,23 @@
+.inputContainer {
+    @apply flex items-start p-[16px] pr-[16px] gap-[12px] border-b-[1px] border-primary-translucent
+}
+
+.label {
+    @apply w-full cursor-text h-full;
+}
+
+.textareaContainer {
+    @apply w-full relative self-stretch min-h-full cursor-text;
+}
+
+.textarea {
+    @apply bg-transparent resize-none outline-0 w-full overflow-hidden absolute text-base px-[16px] py-[6px] border-[2px] border-form-border rounded-[8px];
+    padding-bottom: calc(1.5rem + 6px);
+}
+
+.textarea::placeholder {
+}
+
+.textareaContainer {
+
+}

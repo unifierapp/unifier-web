@@ -1,5 +1,5 @@
 .button {
-    @apply w-fit border-[2px] border-form-border font-[400]
+    @apply w-fit border-[2px] border-form-border font-[400] text-base
 }
 
 .buttonFrame {

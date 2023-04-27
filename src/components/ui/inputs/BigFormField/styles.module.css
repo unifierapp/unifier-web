@@ -3,11 +3,11 @@
 }
 
 .inputContainer {
-    @apply relative w-full flex items-center
+    @apply relative w-full flex items-center h-full
 }
 
 .input {
-    @apply w-full bg-transparent text-inherit placeholder:text-placeholder p-[6px] pl-[16px] pr-[36px] border-[2px] border-form-border rounded-[8px]
+    @apply w-full bg-transparent text-inherit placeholder:text-placeholder h-full p-[6px] pl-[16px] pr-[36px] border-[2px] border-form-border rounded-[8px]
 }
 
 .icon {

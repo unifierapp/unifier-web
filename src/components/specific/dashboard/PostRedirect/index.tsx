@@ -1,5 +1,5 @@
-import linkedin from "@/icons/linkedin.svg";
-import twitter from "@/icons/twitter.svg";
+import linkedin from "@/icons/providers/linkedin.svg";
+import twitter from "@/icons/providers/twitter.svg";
 
 export interface PostRedirectProps {
     provider: string;

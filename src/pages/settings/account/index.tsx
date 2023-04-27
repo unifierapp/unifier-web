@@ -24,6 +24,11 @@ const AccountSettings: NextPageWithLayout = function () {
             <BigFormField placeholder={"Confirm password"} type={"password"} name={"confirm_password"}></BigFormField>
             <ButtonFrame><Button>Change</Button></ButtonFrame>
         </Section>
+        <Section>
+            <SecondaryHeading>Danger Zone</SecondaryHeading>
+            <p>Make changes to your account. Some or all of your data will be lost.</p>
+            <ButtonFrame><Button>Delete account</Button></ButtonFrame>
+        </Section>
     </div>;
 }
 export default AccountSettings;

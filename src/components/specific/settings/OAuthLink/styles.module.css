@@ -1,0 +1,3 @@
+.oAuthLink {
+    @apply text-secondary font-[400] flex gap-[10px] items-center border-[2px]
+}

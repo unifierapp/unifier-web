@@ -1,0 +1,7 @@
+.inputAndButtonContainer {
+    @apply flex gap-[16px] items-stretch
+}
+
+.inputAndButtonContainer > :first-child {
+    @apply flex-1
+}
