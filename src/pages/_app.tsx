@@ -4,7 +4,7 @@ import Head from "next/head";
 import {UserWrapper} from "@/contexts/UserContext";
 import React from "react";
 import {AppProps} from "next/app";
-import {Analytics} from "@vercel/analytics/dist/react";
+import Analytics from "@vercel/analytics/dist/react";
 
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
