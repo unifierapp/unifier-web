@@ -6,17 +6,45 @@ import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/H
 import Section from "@/components/specific/settings/Section";
 import BigFormField from "@/components/ui/inputs/BigFormField";
 import Button, {ButtonFrame} from "@/components/specific/settings/Button";
+import api from "@/helpers/api";
+import {formToJSON} from "axios";
+import {UserContext} from "@/contexts/UserContext";
 
 const AccountSettings: NextPageWithLayout = function () {
+    const {refresh} = React.useContext(UserContext);
+
+    async function changeEmail(form: HTMLFormElement) {
+        const json = formToJSON(form);
+        await api.patch("/user/email", json);
+        await refresh();
+    }
+
+    async function changePassword(form: HTMLFormElement) {
+        const json = formToJSON(form);
+        try {
+            await api.patch("/user/password", json);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+
     return <div>
         <PrimaryHeading>My Account</PrimaryHeading>
-        <Section>
+        <Section onSubmit={e => {
+            e.preventDefault();
+            changeEmail(e.currentTarget).then()
+        }}>
             <SecondaryHeading>Email</SecondaryHeading>
-            <p>Your email helps the system identify your account. Changing the email will disable quick sign in with Google on the current email.</p>
+            <p>Your email helps the system identify your account. Changing the email will disable quick sign in with
+                Google on the current email.</p>
             <BigFormField placeholder={"example@example.com"} type={"email"} name={"email"}></BigFormField>
             <ButtonFrame><Button>Change</Button></ButtonFrame>
         </Section>
-        <Section>
+        <Section onSubmit={e => {
+            e.preventDefault();
+            changePassword(e.currentTarget).then()
+        }}>
             <SecondaryHeading>Password</SecondaryHeading>
             <p>Change your password by filling this form if you think it&apos;s not secure enough.</p>
             <BigFormField placeholder={"Current password"} type={"password"} name={"old_password"}></BigFormField>

@@ -14,7 +14,7 @@ export default function Login() {
     return <GuestRoute>
         <FullScreenOverlayWithCenteredItem>
             <div className={classes.container}>
-                <h1 className={classes.heading}>Log In</h1>
+                <h1 className={classes.primaryHeading}>Log In</h1>
                 <fieldset className={classes.topFields}>
                     <SmallField label={"Email"} icon={mail} name={"email"} type={"email"}
                                 placeholder={"example@example.com"}></SmallField>

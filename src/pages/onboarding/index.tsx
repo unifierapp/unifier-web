@@ -1,10 +1,9 @@
 import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
 import Separator from "@/components/ui/Separator";
 import classes from "./index.module.css";
-import google from "@/icons/providers/google.svg";
 import {FormLink} from "@/components/ui/Link";
 import {OAuthLink} from "@/components/user/OAuthLink";
-import {domainToUrl, getBackendUrl} from "@/helpers/url";
+import {domainToUrl} from "@/helpers/url";
 import mail from "@/icons/mail.svg";
 import SmallField from "@/components/ui/inputs/SmallFormField";
 import React from "react";
@@ -31,7 +30,7 @@ export default function Onboarding() {
     return <PrivateRoute>
         <FullScreenOverlayWithCenteredItem>
             <div className={classes.container}>
-                <h1 className={classes.heading}>Log In</h1>
+                <h1 className={classes.primaryHeading}>Log In</h1>
                 <p>Connect your accounts to Unified and start experiencing the power today.</p>
                 <OAuthLink provider={"twitter"}></OAuthLink>
                 <OAuthLink provider={"twitch"}></OAuthLink>

@@ -3,6 +3,8 @@ declare interface IUser {
     username: string;
     displayName: string;
     email: string;
+    emailVerified: boolean;
+    newEmail: string;
     profilePictureUrl: string;
     profilePictureCloudId?: string;
     onboarded: boolean;

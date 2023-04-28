@@ -1,8 +1,10 @@
 import classes from "./styles.module.css";
-import test from "@/debug/posterIcon.png";
+import test from "@/defaults/posterIcon.png";
 import React from "react";
+import {UserContext} from "@/contexts/UserContext";
 
 export default function StatusInput() {
+    const {user} = React.useContext(UserContext);
     const containerRef = React.useRef<HTMLDivElement | null>(null);
     const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
 
@@ -28,7 +30,7 @@ export default function StatusInput() {
     }, []);
 
     return <form className={classes.inputContainer}>
-        <img className={classes.profilePicture} src={test.src} alt={"Poster"}></img>
+        <img className={classes.profilePicture} src={user?.profilePictureUrl ?? test.src} alt={"Poster"}></img>
         <label className={classes.label}>
             <div className={classes.textareaContainer} ref={containerRef}>
             <textarea className={classes.textarea} onInput={autoResize} placeholder={"Write something to your connected platforms..."}

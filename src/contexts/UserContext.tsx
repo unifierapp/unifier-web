@@ -26,7 +26,7 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
         const user = (await api.get<IUser | null>("/user/current")).data;
         setLoaded(true);
         setUser(user);
-        if (user) {
+        if (user && user.emailVerified) {
             const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);
             setAccounts(accounts);
         } else {

@@ -29,7 +29,7 @@ export default function Signup() {
             e.preventDefault();
             signup(e.currentTarget).then();
         }}>
-            <h1 className={classes.heading}>Sign up</h1>
+            <h1 className={classes.primaryHeading}>Sign up</h1>
             <fieldset className={classes.topFields}>
                 <SmallField label={"Display name"} icon={person} name={"display_name"} type={"text"}
                             placeholder={"Jeremy"}></SmallField>

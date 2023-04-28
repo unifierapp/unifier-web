@@ -3,7 +3,7 @@ import classes from "./styles.module.css";
 
 export default function Logo() {
     return <a href={"/dashboard"} className={classes.logo}>
-        <img src={logo.src} alt={"Converge"} className={classes.logoImage}/>
+        <img src={logo.src} alt={"Unifier"} className={classes.logoImage}/>
         <span className={classes.logoText}>Unifier</span>
     </a>;
 }

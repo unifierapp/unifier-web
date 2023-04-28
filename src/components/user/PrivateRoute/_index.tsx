@@ -5,8 +5,13 @@ import {useRouter} from "next/router";
 export default function PrivateRouteComponent(props: PropsWithChildren<{}>) {
     const router = useRouter();
     const {user, loaded} = React.useContext(UserContext);
-    if (!user && loaded) {
-        router.replace("/login").then();
+    if (loaded) {
+        if (!user) {
+            router.replace("/login").then();
+        } else if (!user.emailVerified && router.pathname !== "/verify") {
+            router.replace("/verify").then();
+        }
     }
+
     return <>{props.children}</>;
 }
