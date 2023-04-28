@@ -13,7 +13,7 @@ const InviteSettings: NextPageWithLayout = function () {
         <Section>
             <SecondaryHeading>Invite</SecondaryHeading>
             <p>Invite some of your peers to make the experience even better.</p>
-            <BigFormField placeholder={"jeremy@unifier.app"} type={"email"} name={"email"}></BigFormField>
+            <BigFormField placeholder={"example@example.com"} type={"email"} name={"email"}></BigFormField>
             <ButtonFrame><Button>Send invite</Button></ButtonFrame>
         </Section>
     </div>;

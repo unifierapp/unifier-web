@@ -1,5 +1,5 @@
 import classes from "./styles.module.css";
-import test from "@/debug/posterIcon.jpg";
+import test from "@/debug/posterIcon.png";
 import React from "react";
 
 export default function StatusInput() {
@@ -31,7 +31,7 @@ export default function StatusInput() {
         <img className={classes.profilePicture} src={test.src} alt={"Poster"}></img>
         <label className={classes.label}>
             <div className={classes.textareaContainer} ref={containerRef}>
-            <textarea className={classes.textarea} onInput={autoResize} placeholder={"Write something to your friends..."}
+            <textarea className={classes.textarea} onInput={autoResize} placeholder={"Write something to your connected platforms..."}
                       ref={textareaRef}></textarea>
             </div>
         </label>

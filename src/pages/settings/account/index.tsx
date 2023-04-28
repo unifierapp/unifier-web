@@ -13,7 +13,7 @@ const AccountSettings: NextPageWithLayout = function () {
         <Section>
             <SecondaryHeading>Email</SecondaryHeading>
             <p>Your email helps the system identify your account. Changing the email will disable quick sign in with Google on the current email.</p>
-            <BigFormField placeholder={"jeremy@unifier.app"} type={"email"} name={"email"}></BigFormField>
+            <BigFormField placeholder={"example@example.com"} type={"email"} name={"email"}></BigFormField>
             <ButtonFrame><Button>Change</Button></ButtonFrame>
         </Section>
         <Section>

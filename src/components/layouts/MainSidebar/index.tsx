@@ -104,6 +104,7 @@ function SidebarLinks(props: { links: SidebarLinkProps[] }) {
 }
 
 function SidebarAccount() {
+<<<<<<< HEAD
     const {user} = React.useContext(UserContext);
 
     if (user) {
@@ -115,6 +116,13 @@ function SidebarAccount() {
     }
 
     return null;
+=======
+    return <Link href={"/profile"} className={`${classes.link} ${classes.account}`}>
+        <img src={test.src} alt={"Profile picture"}
+             className={`${classes.profilePicture}`}/>
+        <span className={classes.linkDescription}>{"username"}</span>
+    </Link>;
+>>>>>>> d78fdd2cdddef9a39f7da6c528fa84818723df51
 }
 
 

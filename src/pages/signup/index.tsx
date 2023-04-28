@@ -34,7 +34,7 @@ export default function Signup() {
                 <SmallField label={"Display name"} icon={person} name={"display_name"} type={"text"}
                             placeholder={"Jeremy"}></SmallField>
                 <SmallField label={"Username"} icon={mail} name={"username"} type={"text"}
-                            placeholder={"jeremy"}></SmallField>
+                            placeholder={"username"}></SmallField>
                 <SmallField label={"Email"} icon={mail} name={"email"} type={"email"}
                             placeholder={"jeremy@example.com"}></SmallField>
                 <SmallField label={"Password"} icon={lock} name={"password"} type={"password"}

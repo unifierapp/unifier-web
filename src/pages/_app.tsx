@@ -22,7 +22,7 @@ export default function MyApp({Component, pageProps}: AppPropsWithLayout) {
     return <>
         <Analytics></Analytics>
         <Head>
-            <title>Unified</title>
+            <title>Unifier</title>
         </Head>
         <UserWrapper>
             {getLayout(<Component {...pageProps} />)}
