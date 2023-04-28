@@ -2,13 +2,13 @@ import classes from "./styles.module.css";
 import React from "react";
 import {element} from "prop-types";
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentPropsWithoutRef<"textarea">>(function (props, ref) {
+const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentPropsWithoutRef<"textarea">>(function Textarea(props, ref) {
     const containerRef = React.useRef<HTMLDivElement | null>(null);
     const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
 
     function autoResize() {
         const textarea = textareaRef.current;
-        const container = containerRef.current
+        const container = containerRef.current;
         if (textarea && container) {
             // Double autoresize to ensure accuracy because of extra scrollbar affecting container width.
             textarea.style.height = "0px";

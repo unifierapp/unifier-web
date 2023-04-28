@@ -33,7 +33,7 @@ const AccountSettings: NextPageWithLayout = function () {
         <PrimaryHeading>My Account</PrimaryHeading>
         <Section onSubmit={e => {
             e.preventDefault();
-            changeEmail(e.currentTarget).then()
+            changeEmail(e.currentTarget).then();
         }}>
             <SecondaryHeading>Email</SecondaryHeading>
             <p>Your email helps the system identify your account. Changing the email will disable quick sign in with
@@ -43,7 +43,7 @@ const AccountSettings: NextPageWithLayout = function () {
         </Section>
         <Section onSubmit={e => {
             e.preventDefault();
-            changePassword(e.currentTarget).then()
+            changePassword(e.currentTarget).then();
         }}>
             <SecondaryHeading>Password</SecondaryHeading>
             <p>Change your password by filling this form if you think it&apos;s not secure enough.</p>

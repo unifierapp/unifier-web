@@ -11,7 +11,7 @@ const Logout: NextPageWithLayout = function () {
     async function signOut() {
         await api.get("/auth/logout");
         await refresh();
-        await router.push("/login")
+        await router.push("/login");
     }
 
     React.useEffect(() => {
@@ -19,6 +19,6 @@ const Logout: NextPageWithLayout = function () {
     }, []);
 
     return <></>;
-}
+};
 
 export default Logout;

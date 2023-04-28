@@ -41,7 +41,7 @@ export default function Verify() {
                 <Separator></Separator>
                 {resolvedMailbox ? <FormLink href={resolvedMailbox}>Go to mailbox</FormLink> : null}
                 <FormButton onClick={async () => {
-                    await api.post("/auth/resend_confirmation_email")
+                    await api.post("/auth/resend_confirmation_email");
                 }}>Resend email</FormButton>
             </div>
         </FullScreenOverlayWithCenteredItem>
