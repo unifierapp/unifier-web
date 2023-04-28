@@ -5,6 +5,7 @@ import StatusInput from "@/components/specific/dashboard/StatusInput";
 import PostViewer from "@/components/specific/dashboard/PostViewer";
 import React from "react";
 import PrivateRoute from "@/components/user/PrivateRoute";
+import SmallScreenWrapper from "@/components/specific/screens/SmallScreenWrapper";
 
 export default function DashboardLayout(props: React.PropsWithChildren) {
     return <PrivateRoute>

@@ -1,6 +1,7 @@
 import React, {PropsWithChildren} from "react";
 import {UserContext} from "@/contexts/UserContext";
 import {useRouter} from "next/router";
+import SmallScreenWrapper from "@/components/specific/screens/SmallScreenWrapper";
 
 export default function PrivateRouteComponent(props: PropsWithChildren<{}>) {
     const router = useRouter();
@@ -13,5 +14,8 @@ export default function PrivateRouteComponent(props: PropsWithChildren<{}>) {
         }
     }
 
-    return <>{props.children}</>;
+    return <>
+        <SmallScreenWrapper></SmallScreenWrapper>
+        {props.children}
+    </>;
 }

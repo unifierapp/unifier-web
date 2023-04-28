@@ -1,6 +1,7 @@
 import React, {PropsWithChildren} from "react";
 import {UserContext} from "@/contexts/UserContext";
 import {useRouter} from "next/router";
+import SmallScreenWrapper from "@/components/specific/screens/SmallScreenWrapper";
 
 export default function GuestRouteComponent(props: PropsWithChildren<{}>) {
     const router = useRouter();
@@ -8,5 +9,8 @@ export default function GuestRouteComponent(props: PropsWithChildren<{}>) {
     if (user && loaded) {
         router.replace("/dashboard").then();
     }
-    return <>{props.children}</>;
+    return <>
+        <SmallScreenWrapper></SmallScreenWrapper>
+        {props.children}
+    </>;
 }

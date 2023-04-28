@@ -1,0 +1,11 @@
+.smallWrapper {
+    @apply md:hidden p-[32px] z-30
+}
+
+.content {
+    @apply max-w-[18.75rem] flex flex-col gap-3
+}
+
+.heading {
+    @apply text-xl leading-6 font-[700]
+}
