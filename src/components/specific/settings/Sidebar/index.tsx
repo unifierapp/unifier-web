@@ -40,7 +40,7 @@ const section1Links: SidebarLinkProps[] = [
         icon: paintbrush,
         description: "Appearance",
     },
-    {
+ /*     {
         href: "/settings/notifications",
         icon: notifications,
         description: "Notifications",
@@ -49,7 +49,7 @@ const section1Links: SidebarLinkProps[] = [
         href: "/settings/billing",
         icon: money,
         description: "Billing",
-    },
+    }, */ 
 ];
 
 const section2Links: SidebarLinkProps[] = [

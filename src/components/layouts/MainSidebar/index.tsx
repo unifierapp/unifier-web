@@ -31,7 +31,7 @@ const links: SidebarLinkProps[] = [
         icon: profile,
         description: "Profile",
     },
-    {
+ /*     {
         href: "/messages",
         icon: messages,
         description: "Messages",
@@ -40,7 +40,7 @@ const links: SidebarLinkProps[] = [
         href: "/notifications",
         icon: notifications,
         description: "Notifications",
-    },
+    }, */ 
 ];
 const miscLinks: SidebarLinkProps[] = [
     {
