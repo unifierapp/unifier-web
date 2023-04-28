@@ -32,11 +32,11 @@ export default function Signup() {
             <h1 className={classes.primaryHeading}>Sign up</h1>
             <fieldset className={classes.topFields}>
                 <SmallField label={"Display name"} icon={person} name={"display_name"} type={"text"}
-                            placeholder={"Jeremy"}></SmallField>
+                            placeholder={"Example"}></SmallField>
                 <SmallField label={"Username"} icon={mail} name={"username"} type={"text"}
-                            placeholder={"username"}></SmallField>
+                            placeholder={"example"}></SmallField>
                 <SmallField label={"Email"} icon={mail} name={"email"} type={"email"}
-                            placeholder={"jeremy@example.com"}></SmallField>
+                            placeholder={"example@example.com"}></SmallField>
                 <SmallField label={"Password"} icon={lock} name={"password"} type={"password"}
                             placeholder={"********"}></SmallField>
                 <SmallField label={"Confirm password"} icon={lock} name={"confirm_password"} type={"password"}
