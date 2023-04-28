@@ -6,7 +6,7 @@ import React from "react";
 import {AppProps} from "next/app";
 import {Analytics} from "@vercel/analytics/react";
 import favicon from "@/icons/favicon.png";
-
+import og from "@/assets/og.png";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: React.ReactElement) => React.ReactNode
@@ -29,7 +29,7 @@ function HeadContent() {
         <meta property="og:title" content="Unifier - Your unified feed for social-media!"/>
         <meta property="og:description"
               content="Streamline your social life without distracting algorithms, connect with all of your favorite people from any platform in one place!"/>
-        <meta property="og:image" content=""/>
+        <meta property="og:image" content={og.src}/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://unifier.app/"/>
@@ -37,7 +37,7 @@ function HeadContent() {
               content="Unifier - Your unified feed for social-media!"/>
         <meta property="twitter:description"
               content="Streamline your social life without distracting algorithms, connect with all of your favorite people from any platform in one place!"/>
-        <meta property="twitter:image" content=""/>
+        <meta property="twitter:image" content={og.src}/>
     </Head>;
 }
 
