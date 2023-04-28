@@ -8,5 +8,5 @@ export default function SmallScreenWrapper() {
             <p>You’ll soon be able to experience the fun soon, stay updated by following us on Twitter and Atlis.</p>
             <p>If you are a desktop user, try expanding the browser window.</p>
         </section>
-    </FullScreenOverlayWithCenteredItem>
+    </FullScreenOverlayWithCenteredItem>;
 }
