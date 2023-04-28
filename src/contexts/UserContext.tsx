@@ -24,10 +24,14 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
 
     async function load() {
         const user = (await api.get<IUser | null>("/user/current")).data;
-        const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);
         setLoaded(true);
-        setAccounts(accounts);
         setUser(user);
+        if (user) {
+            const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);
+            setAccounts(accounts);
+        } else {
+            setAccounts([]);
+        }
     }
 
     function onboard() {
@@ -37,8 +41,8 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
         }
     }
 
-    function refresh() {
-        load().then();
+    async function refresh() {
+        await load();
     }
 
     return <UserContext.Provider value={{

@@ -1,6 +1,7 @@
 declare interface IUser {
     _id: string;
     username: string;
+    displayName: string;
     email: string;
     profilePictureUrl: string;
     profilePictureCloudId?: string;

@@ -1,5 +1,6 @@
 import linkedin from "@/icons/providers/linkedin.svg";
 import twitter from "@/icons/providers/twitter.svg";
+import mastodon from "@/icons/providers/mastodon.svg";
 
 export interface PostRedirectProps {
     provider: string;
@@ -17,6 +18,10 @@ export default function PostRedirect(props: PostRedirectProps) {
         linkedin: {
             url: props.directUrl ?? "",
             icon: linkedin
+        },
+        mastodon: {
+            url: props.directUrl ?? "",
+            icon: mastodon,
         }
     };
 

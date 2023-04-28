@@ -4,7 +4,7 @@ import SettingsLayout from "@/components/specific/settings/Layout";
 import DashboardLayout from "@/components/specific/dashboard/Layout";
 import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/Heading";
 import Section from "@/components/specific/settings/Section";
-import {OAuthLink} from "@/components/specific/settings/OAuthLink";
+import {OAuthLink} from "@/components/user/OAuthLink";
 import BigFormField from "@/components/ui/inputs/BigFormField";
 import Grid from "@/components/specific/settings/Grid";
 import {InputAndButtonContainer} from "@/components/specific/settings/Input";

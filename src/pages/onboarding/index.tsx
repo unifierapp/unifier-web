@@ -2,20 +2,19 @@ import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOv
 import Separator from "@/components/ui/Separator";
 import classes from "./index.module.css";
 import google from "@/icons/providers/google.svg";
-import {FormLink, OAuthLink} from "@/components/ui/Link";
+import {FormLink} from "@/components/ui/Link";
+import {OAuthLink} from "@/components/user/OAuthLink";
 import {domainToUrl, getBackendUrl} from "@/helpers/url";
 import mail from "@/icons/mail.svg";
 import SmallField from "@/components/ui/inputs/SmallFormField";
 import React from "react";
-import PrivateRoute from "@/components/ui/PrivateRoute";
+import PrivateRoute from "@/components/user/PrivateRoute";
 import api from "@/helpers/api";
 import {UserContext} from "@/contexts/UserContext";
 import {useRouter} from "next/navigation";
 
 export default function Onboarding() {
     const [mastodonEndpoint, setMastodonEndpoint] = React.useState("");
-    const mastodonAuthUrl = new URL(getBackendUrl("/auth/mastodon"));
-    mastodonAuthUrl.searchParams.set("endpoint", mastodonEndpoint);
     const {onboard} = React.useContext(UserContext);
     const router = useRouter();
 
@@ -34,18 +33,18 @@ export default function Onboarding() {
             <div className={classes.container}>
                 <h1 className={classes.heading}>Log In</h1>
                 <p>Connect your accounts to Unified and start experiencing the power today.</p>
-                <OAuthLink href={getBackendUrl("/auth/twitter")} icon={google}>Click to connect Twitter</OAuthLink>
-                <OAuthLink href={getBackendUrl("/auth/twitch")} icon={google}>Click to connect Twitch</OAuthLink>
+                <OAuthLink provider={"twitter"}></OAuthLink>
+                <OAuthLink provider={"twitch"}></OAuthLink>
                 <SmallField icon={mail} name={"endpoint"} type={"url"}
                             placeholder={"https://mastodon.social"} onBlur={e => {
                     const newValue = domainToUrl(e.currentTarget.value);
                     e.currentTarget.value = newValue;
                     setMastodonEndpoint(newValue);
                 }}></SmallField>
-                <OAuthLink href={mastodonAuthUrl.toString()} icon={google}>Click to connect Mastodon</OAuthLink>
-                <OAuthLink href={getBackendUrl("/auth/linkedin")} icon={google}>Click to connect LinkedIn</OAuthLink>
-                <OAuthLink href={getBackendUrl("/auth/instagram")} icon={google}>Click to connect Instagram</OAuthLink>
-                <OAuthLink href={getBackendUrl("/auth/facebook")} icon={google}>Click to connect Facebook</OAuthLink>
+                <OAuthLink provider={"mastodon"} decentralized={true} endpoint={mastodonEndpoint}></OAuthLink>
+                <OAuthLink provider={"linkedin"}></OAuthLink>
+                <OAuthLink provider={"instagram"}></OAuthLink>
+                <OAuthLink provider={"facebook"}></OAuthLink>
                 <Separator></Separator>
                 <FormLink href={"/dashboard"} onClick={finishOnboarding}>Continue</FormLink>
             </div>

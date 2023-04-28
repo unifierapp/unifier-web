@@ -36,6 +36,12 @@ export interface PostProps {
 }
 
 export default function Post(props: PostProps) {
+    if (props.postData?.attachments?.length ?? 0 > 0) {
+        for (let attachment of props.postData?.attachments ?? []) {
+            console.log(attachment);
+        }
+    }
+
     if (props.postData) {
         const relativeTime = dayjs(props.postData.lastUpdatedAt).fromNow();
 
@@ -61,11 +67,11 @@ export default function Post(props: PostProps) {
                         {HTMLReactParser(props.postData.content)}
                     </div>
                 </div>
-                <div className={attachmentClassName}>
+                {props.postData.attachments.length > 0 ? <div className={attachmentClassName}>
                     {attachments.map((item, index) => {
                         return <Attachment {...item} key={index}></Attachment>;
                     })}
-                </div>
+                </div> : null}
                 <nav className={classes.stats}>
                     <EngagementInfo provider={props.provider} type={"comment"}
                                     count={props.postData.engagements.comments} isActive={false}></EngagementInfo>

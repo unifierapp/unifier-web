@@ -7,10 +7,10 @@ import linkedin from "@/icons/providers/linkedin.svg";
 import mastodon from "@/icons/providers/mastodon.svg";
 import facebook from "@/icons/providers/facebook.svg";
 import instagram from "@/icons/providers/instagram.svg";
+import twitch from "@/icons/providers/twitch.svg";
 import {capitalize} from "@/helpers/string";
 import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
-import axios from "axios";
 import api from "@/helpers/api";
 
 const icon_mapping: Record<string, { src: string }> = {
@@ -19,11 +19,12 @@ const icon_mapping: Record<string, { src: string }> = {
     mastodon: mastodon,
     facebook: facebook,
     instagram: instagram,
+    twitch: twitch,
 };
 
 export function OAuthLink({
-                              provider, endpoint, decentralized = false, children
-                          }: PropsWithChildren<{ provider: string, endpoint?: string, decentralized?: boolean }>) {
+                              provider, endpoint, decentralized = false
+                          }: { provider: string, endpoint?: string, decentralized?: boolean }) {
     const {accounts, refresh} = React.useContext(UserContext);
     const lookup = {
         linked: false,

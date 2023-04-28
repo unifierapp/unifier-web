@@ -5,14 +5,13 @@ import profile from "@/icons/profile.svg";
 import messages from "@/icons/messages.svg";
 import settings from "@/icons/settings.svg";
 import changelogs from "@/icons/announcements.svg";
-import download from "@/icons/download.svg";
 import logout from "@/icons/logout.svg";
-import test from "@/debug/posterIcon.jpg";
 import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
 import {usePathname} from 'next/navigation';
 import classes from "./styles.module.css";
+import {UserContext} from "@/contexts/UserContext";
 
 interface SidebarLinkProps {
     href: string,
@@ -105,11 +104,17 @@ function SidebarLinks(props: { links: SidebarLinkProps[] }) {
 }
 
 function SidebarAccount() {
-    return <Link href={"/profile"} className={`${classes.link} ${classes.account}`}>
-        <img src={test.src} alt={"Profile picture"}
-             className={`${classes.profilePicture}`}/>
-        <span className={classes.linkDescription}>{"Khanh Tran"}</span>
-    </Link>;
+    const {user} = React.useContext(UserContext);
+
+    if (user) {
+        return <Link href={"/profile"} className={`${classes.link} ${classes.account}`}>
+            <img src={user.profilePictureUrl} alt={"Profile picture"}
+                 className={`${classes.profilePicture}`}/>
+            <span className={classes.linkDescription}>{user.displayName}</span>
+        </Link>;
+    }
+
+    return null;
 }
 
 

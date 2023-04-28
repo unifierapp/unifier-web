@@ -34,7 +34,7 @@ export default function PostViewer() {
             {
                 posts.map((postProps, index) => {
                     return <Post {...postProps} key={index}></Post>;
-                })}gi
+                })}
         </InfiniteScroller>
     </section>;
 }

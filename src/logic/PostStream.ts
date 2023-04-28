@@ -35,7 +35,6 @@ export class PostStream {
             }
         }).then(res => res.data);
         result.sort((p1, p2) => p2.post_id.localeCompare(p1.post_id));
-        console.log(result.map(res => res.post_id));
         if (result.length > 0) {
             if (mode === "newest") {
                 this.streamCursor = {};
@@ -47,7 +46,6 @@ export class PostStream {
                 this.streamCursor.max_id = result[result.length - 1].post_id;
             }
         }
-        console.log(this.streamCursor);
         return result.map(rawPost => {
             return {
                 connectionInfo: {
@@ -65,6 +63,7 @@ export class PostStream {
                     },
                     attachments: rawPost.attachments,
                 },
+                directUrl: rawPost.url,
                 isResolved: false,
                 providerUserInfo: {
                     userName: rawPost.provider_account.username,

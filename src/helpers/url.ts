@@ -11,7 +11,6 @@ export function domainToUrl(domain: string): string {
         const urlFactors = domain.split(".");
         if (!urlFactors.every(factor => {
             const result = /^\w+$/.test(factor);
-            console.log(factor, result);
             return result;
         })) {
             return "";
