@@ -22,7 +22,7 @@ const ConnectionSettings: NextPageWithLayout = function () {
                 <OAuthLink provider={"instagram"}></OAuthLink>
                 <OAuthLink provider={"linkedin"}></OAuthLink>
             </Grid>
-            <p>Can&apos;t find what you&apos;re looking for? <a href="/settings/feedback">Suggest a platform</a></p>
+            <p>Can&apos;t find what you&apos;re looking for? <Link href="/settings/feedback">Suggest a platform</Link></p>
         </Section>
         <Section>
             <SecondaryHeading>Mastodon</SecondaryHeading>
