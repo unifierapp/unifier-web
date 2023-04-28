@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"
 import {NextPageWithLayout} from "@/pages/_app";
 import SettingsLayout from "@/components/specific/settings/Layout";
 import DashboardLayout from "@/components/specific/dashboard/Layout";
