@@ -17,10 +17,10 @@ const ConnectionSettings: NextPageWithLayout = function () {
             <SecondaryHeading>Centralized Accounts</SecondaryHeading>
             <p>Manage all of your centralized social media accounts, like Twitter, Instagram or Facebook.</p>
             <Grid columns={2}>
-                <OAuthLink provider={"twitter"}>Click to connect Twitter</OAuthLink>
-                <OAuthLink provider={"facebook"}>Click to connect Facebook</OAuthLink>
-                <OAuthLink provider={"instagram"}>Click to connect Instagram</OAuthLink>
-                <OAuthLink provider={"linkedin"}>Click to connect LinkedIn</OAuthLink>
+                <OAuthLink provider={"twitter"}></OAuthLink>
+                <OAuthLink provider={"facebook"}></OAuthLink>
+                <OAuthLink provider={"instagram"}></OAuthLink>
+                <OAuthLink provider={"linkedin"}></OAuthLink>
             </Grid>
         </Section>
         <Section>
