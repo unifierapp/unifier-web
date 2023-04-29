@@ -1,6 +1,6 @@
 import React from "react";
 import api from "@/helpers/api";
-import defaultProfilePicture from "@/defaults/posterIcon.png"
+import defaultProfilePicture from "@/defaults/posterIcon.png";
 
 export const UserContext = React.createContext<{ user: IUser | null, accounts: IAccount[], refresh: () => void, loaded: boolean, onboard: () => void }>({
     user: null,
