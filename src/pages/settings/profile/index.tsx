@@ -39,8 +39,9 @@ const ProfileSettings: NextPageWithLayout = function () {
                 <p>Your profile picture is displayed everywhere, and helps identify you. Go ahead and put on a bright
                     face!</p>
                 <input hidden={true} type={"file"} ref={inputRef} onChange={e => {
-                    if (e.currentTarget?.files?.length > 0) {
-                        changeProfilePicture(e.currentTarget?.files[0]).then();
+                    const files = e.currentTarget?.files;
+                    if (files && files.length > 0) {
+                        changeProfilePicture(files[0]).then();
                         e.currentTarget.value = "";
                     }
                 }} name={"profile_picture"} accept={"image/jpeg,image/png"}/>
