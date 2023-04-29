@@ -1,5 +1,6 @@
 import React from "react";
 import api from "@/helpers/api";
+import defaultProfilePicture from "@/defaults/posterIcon.png"
 
 export const UserContext = React.createContext<{ user: IUser | null, accounts: IAccount[], refresh: () => void, loaded: boolean, onboard: () => void }>({
     user: null,
@@ -25,6 +26,9 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     async function load() {
         const user = (await api.get<IUser | null>("/user/current")).data;
         setLoaded(true);
+        if (user && !user.profilePictureUrl) {
+            user.profilePictureUrl = defaultProfilePicture.src;
+        }
         setUser(user);
         if (user && user.emailVerified) {
             const accounts = await api.get<IAccount[]>("/provider/get_all").then(res => res.data);

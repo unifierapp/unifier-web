@@ -1,0 +1,7 @@
+.underlineLink {
+    @apply underline underline-offset-2
+}
+
+.connectionGrid {
+    @apply lg:grid-cols-2
+}

@@ -2,7 +2,7 @@ import React, {PropsWithChildren} from "react";
 import classes from "./styles.module.css";
 import NextLink, {LinkProps} from "next/link";
 
-export default function Link(props: React.ComponentPropsWithRef<"a"> & LinkProps) {
+export default function Link(props: React.ComponentPropsWithRef<"a"> & LinkProps & {disabled?: boolean}) {
     return <NextLink {...props} className={`${classes.link} ${props.className || ""}`}></NextLink>;
 }
 

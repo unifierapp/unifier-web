@@ -1,3 +1,12 @@
 .oAuthLink {
-    @apply text-secondary font-[400] flex gap-[10px] items-center border-[2px]
+    @apply text-secondary font-[400] flex gap-[10px] items-center border-[2px];
+    @apply px-[16px] py-[8px] text-sm rounded-[8px] border-primary-translucent relative;
+}
+
+.linkInner {
+    @apply absolute top-0 left-0 w-full h-full
+}
+
+.description {
+    @apply flex-1
 }

@@ -1,0 +1,15 @@
+.accounts {
+    @apply flex flex-col gap-4;
+}
+
+.account {
+    @apply flex gap-[16px] items-center
+}
+
+.description {
+    @apply flex-1
+}
+
+.unlinkButton {
+
+}

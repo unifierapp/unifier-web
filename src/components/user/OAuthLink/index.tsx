@@ -1,7 +1,8 @@
 import React, {PropsWithChildren} from "react";
-import Link from "@/components/ui/Link";
+import Link, {LinkProps} from "next/link";
 import {getBackendUrl} from "@/helpers/url";
 import add from "@/icons/add.svg";
+import cross from "@/icons/cross.svg";
 import twitter from "@/icons/providers/twitter.svg";
 import linkedin from "@/icons/providers/linkedin.svg";
 import mastodon from "@/icons/providers/mastodon.svg";
@@ -21,6 +22,10 @@ const icon_mapping: Record<string, { src: string }> = {
     instagram: instagram,
     twitch: twitch,
 };
+
+function LinkLayer(props: React.ComponentPropsWithoutRef<"a"> & LinkProps) {
+    return <Link {...props} className={`${classes.linkInner}`}></Link>;
+}
 
 export function OAuthLink({
                               provider, endpoint, decentralized = false
@@ -49,27 +54,35 @@ export function OAuthLink({
             Link a new {capitalize(provider)} account
         </>;
         if (!endpoint) {
-            return <Link href={"#"} className={classes.oAuthLink}>{linkInner}</Link>;
+            return <div className={classes.oAuthLink}>
+                {linkInner}
+                <LinkLayer href={"#"}></LinkLayer>
+            </div>;
         }
         const url = new URL(getBackendUrl(`/auth/${provider}`));
         url.searchParams.set("endpoint", endpoint);
-        return <Link href={url.toString()} className={classes.oAuthLink}>
+        return <div className={classes.oAuthLink}>
             {linkInner}
-        </Link>;
+            <LinkLayer href={url.toString()}></LinkLayer>
+        </div>;
     } else if (!lookup.linked) {
-        return <Link href={getBackendUrl(`/auth/${provider}`)} className={classes.oAuthLink}>
+        return <div className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
             Link your {capitalize(provider)} account
-        </Link>;
+            <LinkLayer href={getBackendUrl(`/auth/${provider}`)}></LinkLayer>
+        </div>;
     } else {
         const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
         unlinkUrl.searchParams.set("provider", provider);
-        return <Link href={unlinkUrl.toString()} onClick={(e) => {
-            e.preventDefault();
-            runUnlink(unlinkUrl.toString()).then();
-        }} className={classes.oAuthLink}>
+        return <div className={classes.oAuthLink}>
             <img src={icon.src} alt={provider}/>
-            <span>Signed in as {lookup.displayName}</span>
-        </Link>;
+            <span className={classes.description}>Signed in as {lookup.displayName}</span>
+            <button onClick={(e) => {
+                e.preventDefault();
+                runUnlink(unlinkUrl.toString()).then();
+            }}>
+                <img src={cross.src} alt={`Unlink ${capitalize(provider)} account`}/>
+            </button>
+        </div>;
     }
 }
