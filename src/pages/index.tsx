@@ -57,7 +57,7 @@ export default function LandingPage() {
                         </div>
                         <ul className={classes.providerIconFrame}>
                             {SUPPORTED_PROVIDER_ICONS.map(icon => {
-                                return <li><img className={classes.providerIcon} src={icon.icon.src} alt={icon.name} key={icon.icon.src}/>
+                                return <li key={icon.icon.src}><img className={classes.providerIcon} src={icon.icon.src} alt={icon.name}/>
                                 </li>;
                             })}
                         </ul>
