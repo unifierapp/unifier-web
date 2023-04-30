@@ -14,9 +14,10 @@ const Settings: NextPageWithLayout = function () {
 export default Settings;
 
 Settings.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };

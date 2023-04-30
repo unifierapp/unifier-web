@@ -62,9 +62,10 @@ const ProfileSettings: NextPageWithLayout = function () {
 export default ProfileSettings;
 
 ProfileSettings.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };

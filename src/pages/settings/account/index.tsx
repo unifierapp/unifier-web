@@ -62,9 +62,10 @@ const AccountSettings: NextPageWithLayout = function () {
 export default AccountSettings;
 
 AccountSettings.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };

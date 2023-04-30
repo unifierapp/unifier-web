@@ -36,9 +36,10 @@ const ConnectionSettings: NextPageWithLayout = function () {
 export default ConnectionSettings;
 
 ConnectionSettings.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };

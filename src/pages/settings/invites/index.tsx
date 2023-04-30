@@ -21,9 +21,10 @@ const InviteSettings: NextPageWithLayout = function () {
 export default InviteSettings;
 
 InviteSettings.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };

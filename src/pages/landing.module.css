@@ -1,0 +1,73 @@
+.header {
+    @apply flex-none
+}
+
+.navigation {
+    @apply px-[32px] py-7 md:px-[128px] md:py-5 flex justify-between
+}
+
+.logoLink {
+    @apply flex gap-2 items-center
+}
+
+.toast {
+    @apply text-accent-green
+}
+
+.navLinks {
+    @apply flex gap-[64px] items-center font-[600]
+}
+
+.loginLink {
+    @apply hidden md:flex border-[1px] font-[400]
+}
+
+.hero {
+    @apply flex px-[32px] md:px-[128px] flex-1
+}
+
+.heroImageContainer {
+    @apply hidden lg:flex flex-1 pt-[60px] relative flex
+}
+
+.heroImage {
+    @apply h-[110%] absolute w-fit max-w-none
+}
+
+.landing {
+    @apply flex flex-col w-full h-full
+}
+
+.heroText {
+    @apply flex flex-col justify-center gap-6 flex-1 relative;
+    font-family: "Space Grotesk", "system-ui", sans-serif;
+}
+
+.heroHeading {
+    @apply text-[2rem] leading-10 font-[700];
+}
+
+.heroDescription {
+    @apply text-base leading-5 text-secondary;
+}
+
+.heroButtonFrame {
+    @apply flex gap-[10px]
+}
+
+.heroLink {
+    @apply flex-1 justify-center font-[Inter] text-center border-form-border
+}
+
+.focusedHeroLink {
+    @apply bg-form-border
+}
+
+.providerIconFrame {
+    @apply flex gap-[10px]
+}
+
+.providerIcon {
+    @apply brightness-75
+}
+

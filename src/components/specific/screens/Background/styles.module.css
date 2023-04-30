@@ -1,0 +1,19 @@
+.overlay {
+    @apply fixed overflow-hidden w-full h-full top-0 left-0 -z-30
+}
+
+.decorator1 {
+    @apply absolute bg-[#3C75CC] opacity-25 blur-[256px] top-1/2 -translate-y-1/2 -translate-x-1/2 left-[32px] md:left-[128px] h-[640px] aspect-square rounded-full;
+}
+
+.decorator2 {
+    @apply absolute bg-[#3CA9CC] opacity-25 blur-[256px] -top-[10px] -translate-y-1/2 translate-x-1/2 right-[32px] md:right-[128px] h-[412px] aspect-square rounded-full;
+}
+
+.decorator3 {
+    @apply absolute bg-[#613CCC] opacity-25 blur-[256px] bottom-0 translate-y-1/2 translate-x-1/2 right-[32px] md:right-[128px] h-[640px] aspect-square rounded-full;
+}
+
+.decorator4 {
+    @apply absolute bg-[#BBD6FF] opacity-25 blur-[256px] top-1/2 -translate-y-1/2 left-1/2 h-[300px] aspect-square rounded-full;
+}

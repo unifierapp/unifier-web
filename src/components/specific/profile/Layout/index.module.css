@@ -1,0 +1,19 @@
+.welcomeSection {
+    @apply px-[28px] py-[30px] flex gap-[16px] border-b-[1px] border-primary-translucent
+}
+
+.welcomeSectionLeft {
+    @apply flex flex-col gap-[1rem] flex-1 leading-[1.5rem]
+}
+
+.welcomeHeading {
+    @apply text-[1.25rem] font-[600]
+}
+
+.welcomeSectionRight {
+    @apply flex-none flex flex-col justify-center gap-[4px]
+}
+
+.logoutButton {
+    @apply text-warning
+}

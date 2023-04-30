@@ -21,9 +21,10 @@ const FeedbackDialog: NextPageWithLayout = function () {
 export default FeedbackDialog;
 
 FeedbackDialog.getLayout = function (page) {
-    return <DashboardLayout>
+    return <>
+        <DashboardLayout></DashboardLayout>
         <SettingsLayout>
             {page}
         </SettingsLayout>
-    </DashboardLayout>;
+    </>;
 };
