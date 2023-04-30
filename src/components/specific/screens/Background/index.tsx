@@ -6,5 +6,5 @@ export default function Background() {
         <div className={classes.decorator2}></div>
         <div className={classes.decorator3}></div>
         <div className={classes.decorator4}></div>
-    </div>
+    </div>;
 }

@@ -20,7 +20,7 @@ const SUPPORTED_PROVIDER_ICONS = [
     {name: "Mastodon", icon: mastodon},
     {name: "Facebook", icon: facebook},
     {name: "Linkedin", icon: linkedin}
-]
+];
 
 export default function LandingPage() {
     return (
@@ -57,8 +57,8 @@ export default function LandingPage() {
                         </div>
                         <ul className={classes.providerIconFrame}>
                             {SUPPORTED_PROVIDER_ICONS.map(icon => {
-                                return <li><img className={classes.providerIcon} src={icon.icon.src} alt={icon.name}/>
-                                </li>
+                                return <li><img className={classes.providerIcon} src={icon.icon.src} alt={icon.name} key={icon.icon.src}/>
+                                </li>;
                             })}
                         </ul>
                     </div>
