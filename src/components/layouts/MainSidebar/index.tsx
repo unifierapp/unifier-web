@@ -58,12 +58,12 @@ const miscLinks: SidebarLinkProps[] = [
     },
 ];
 
-
 function SidebarLink(props: SidebarLinkProps) {
     const router = useRouter();
     const path = usePathname() ?? "";
     const href: UrlObject = typeof props.href === "string" ? {pathname: props.href} : props.href;
-    const active = href.pathname ? path.startsWith(href.pathname) : false;
+    const displayedHref = props.as ?? href.pathname;
+    const active = displayedHref ? path.startsWith(displayedHref) : false;
 
     const getToastMapping: Record<string, () => string | number | void> = {
         "/changelogs": () => "New",
@@ -75,21 +75,19 @@ function SidebarLink(props: SidebarLinkProps) {
         toast = <Toast className={props.toastClassName || ""}>{result}</Toast>;
     }
 
-    return <li>
-        <Link as={props.as ?? undefined} shallow={!!props.as} href={{
-            ...href,
-            query: {
-                ...router.query,
-                ...(typeof href.query === "object" && href.query ? href.query : {}),
-            }
-        }}
-              className={`${classes.link} ${active ? classes.activeLink : ""}`}>
-            <img src={props.icon.src} alt={props.description}
-                 className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
-            <span className={classes.linkDescription}>{props.description}</span>
-            {toast}
-        </Link>
-    </li>;
+    return <Link as={props.as ?? undefined} shallow={!!props.as} href={{
+        ...href,
+        query: {
+            ...router.query,
+            ...(typeof href.query === "object" && href.query ? href.query : {}),
+        }
+    }}
+                 className={`${classes.link} ${active ? classes.activeLink : ""}`}>
+        <img src={props.icon.src} alt={props.description}
+             className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
+        <span className={classes.linkDescription}>{props.description}</span>
+        {toast}
+    </Link>;
 }
 
 function Separator() {
@@ -99,7 +97,9 @@ function Separator() {
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
         {props.links.map((info, index) => {
-            return <SidebarLink {...info} key={index}></SidebarLink>;
+            return <li>
+                <SidebarLink {...info} key={index}></SidebarLink>
+            </li>;
         })}
     </ul>;
 }
