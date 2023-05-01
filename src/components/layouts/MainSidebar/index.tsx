@@ -2,24 +2,25 @@ import Toast from "@/components/ui/Toast";
 import Logo from "@/components/ui/Logo";
 import feed from "@/icons/feed.svg";
 import profile from "@/icons/profile.svg";
-import messages from "@/icons/messages.svg";
 import settings from "@/icons/settings.svg";
 import changelogs from "@/icons/announcements.svg";
 import logout from "@/icons/logout.svg";
-import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
 import {usePathname} from 'next/navigation';
 import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
+import {useRouter} from "next/router";
+import {UrlObject} from "url";
 
 interface SidebarLinkProps {
-    href: string,
+    href: string | UrlObject,
     as?: string,
     icon: { src: string },
     description: string,
     toastClassName?: string
 }
+
 const links: SidebarLinkProps[] = [
     {
         href: "/dashboard",
@@ -31,20 +32,15 @@ const links: SidebarLinkProps[] = [
         icon: profile,
         description: "Profile",
     },
- /*     {
-        href: "/messages",
-        icon: messages,
-        description: "Messages",
-    },
-    {
-        href: "/notifications",
-        icon: notifications,
-        description: "Notifications",
-    }, */
 ];
 const miscLinks: SidebarLinkProps[] = [
     {
-        href: "?modal_type=settings&settings_tab=account",
+        href: {
+            query: {
+                modal_type: "settings",
+                settings_tab: "account",
+            }
+        },
         as: "/settings",
         icon: settings,
         description: "Settings"
@@ -64,21 +60,30 @@ const miscLinks: SidebarLinkProps[] = [
 
 
 function SidebarLink(props: SidebarLinkProps) {
+    const router = useRouter();
     const path = usePathname() ?? "";
-    const active = path.startsWith(props.href);
+    const href: UrlObject = typeof props.href === "string" ? {pathname: props.href} : props.href;
+    const active = href.pathname ? path.startsWith(href.pathname) : false;
 
     const getToastMapping: Record<string, () => string | number | void> = {
         "/changelogs": () => "New",
     };
 
-    const result = getToastMapping[props.href]?.();
+    const result = getToastMapping[props.href.toString()]?.();
     let toast;
     if (result !== undefined) {
         toast = <Toast className={props.toastClassName || ""}>{result}</Toast>;
     }
 
     return <li>
-        <Link as={props.as as string} href={props.href} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
+        <Link as={props.as ?? undefined} shallow={!!props.as} href={{
+            ...href,
+            query: {
+                ...router.query,
+                ...(typeof href.query === "object" && href.query ? href.query : {}),
+            }
+        }}
+              className={`${classes.link} ${active ? classes.activeLink : ""}`}>
             <img src={props.icon.src} alt={props.description}
                  className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>
@@ -93,8 +98,8 @@ function Separator() {
 
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
-        {props.links.map((info) => {
-            return <SidebarLink {...info} key={info.href}></SidebarLink>;
+        {props.links.map((info, index) => {
+            return <SidebarLink {...info} key={index}></SidebarLink>;
         })}
     </ul>;
 }

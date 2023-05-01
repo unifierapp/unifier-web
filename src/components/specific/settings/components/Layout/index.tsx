@@ -13,7 +13,7 @@ import FeedbackDialog from "@/components/specific/settings/pages/feedback";
 export default function SettingsLayout() {
     const router = useRouter();
 
-    const mappings: Record<string, (props: {}) => React.ReactNode> = {
+    const mappings: Record<string, (props: {}) => JSX.Element> = {
         account: AccountSettings,
         profile: ProfileSettings,
         connections: ConnectionSettings,
@@ -21,14 +21,28 @@ export default function SettingsLayout() {
         feedback: FeedbackDialog,
     };
 
-    const Component = mappings[router.query.settings_tab] ?? AccountSettings;
+    let Component;
+    const settingsTab = router.query.settings_tab;
+    if (typeof settingsTab !== "string") {
+        Component = AccountSettings;
+    } else {
+        Component = mappings[settingsTab] ?? AccountSettings;
+    }
 
     return <FullScreenOverlayWithCenteredItem opaqueBackdrop={false} onOuterClick={e => {
-        router.push("?").then();
+        router.push({
+            query: {
+                ...router.query,
+                modal_type: undefined,
+                settings_tab: undefined,
+            }
+        }, undefined, {
+            shallow: true,
+        }).then();
     }}>
         <Modal>
             <Sidebar></Sidebar>
-            <Page>{<Component/>}</Page>
+            <Page><Component/></Page>
         </Modal>
     </FullScreenOverlayWithCenteredItem>;
 }

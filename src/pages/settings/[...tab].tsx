@@ -12,7 +12,7 @@ export default function SettingsRouter() {
         searchParams.set("modal_type", modalType);
         searchParams.set("settings_tab", settingsPageId);
         router.replace(url, `/${modalType}/${settingsPageId}`).then();
-    }, []);
+    }, [router]);
 
     return null;
 }

@@ -9,11 +9,12 @@ import HTMLReactParser from "html-react-parser";
 dayjs.extend(relativeTime);
 
 export interface PostProps {
-    connectionInfo: {
+    connectionInfo?: {
+        type: "user" | "localProfile",
         displayName: string,
-        connectionId?: string,
+        profileImageUrl?: string,
+        id: string,
     },
-    isResolved: boolean,
     provider: string,
     providerUserInfo: {
         userName: string;
@@ -21,7 +22,7 @@ export interface PostProps {
         displayName: string;
         profileImageUrl: string;
     },
-    postData?: {
+    postData: {
         providerPostId: string,
         lastUpdatedAt: Date,
         content: string,
@@ -36,12 +37,11 @@ export interface PostProps {
 }
 
 export default function Post(props: PostProps) {
-    if (props.postData?.attachments?.length ?? 0 > 0) {
-        for (let attachment of props.postData?.attachments ?? []) {
+    if (props.postData.attachments?.length ?? 0 > 0) {
+        for (let attachment of props.postData.attachments ?? []) {
             console.log(attachment);
         }
     }
-
     if (props.postData) {
         const relativeTime = dayjs(props.postData.lastUpdatedAt).fromNow();
 
@@ -53,12 +53,15 @@ export default function Post(props: PostProps) {
         const attachmentClassName = attachmentClassNames.join(" ");
 
         return <article className={classes.postContainer}>
-            <img src={props.providerUserInfo.profileImageUrl} alt={"Poster icon"} className={classes.profilePicture}></img>
+            <img src={props.connectionInfo?.profileImageUrl ?? props.providerUserInfo.profileImageUrl}
+                 alt={"Poster icon"}
+                 className={classes.profilePicture}></img>
             <div className={classes.postContent}>
                 <div className={classes.postTextContent}>
                     <div className={classes.topBar}>
                         <div className={classes.posterInfo}>
-                            <span className={classes.posterName}>{props.connectionInfo.displayName}</span>
+                            <span
+                                className={classes.posterName}>{props.connectionInfo?.displayName ?? props.providerUserInfo.displayName}</span>
                             <div className={classes.separator}></div>
                             <span className={classes.relativeTime}>{relativeTime}</span>
                         </div>
@@ -83,7 +86,6 @@ export default function Post(props: PostProps) {
                                   postId={props.postData.providerPostId} directUrl={props.directUrl}></PostRedirect>
                 </nav>
             </div>
-
         </article>;
     }
     return null;

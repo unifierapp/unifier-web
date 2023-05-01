@@ -52,5 +52,8 @@ declare interface Attachment {
     preview_url: string,
 }
 
-declare interface PublicUser extends Omit<IUser, "profilePictureCloudId" | "newEmail" | "emailVerified" | "email" | "onboarded"> {}
-declare interface PublicAccount extends Omit<IAccount, "internalListId" | "refreshToken" | "accessToken" | "accessTokenSecret"> {}
+declare interface IPublicUser extends Omit<IUser, "profilePictureCloudId" | "newEmail" | "emailVerified" | "email" | "onboarded"> {
+}
+
+declare interface IPublicAccount extends Omit<IAccount, "internalListId" | "refreshToken" | "accessToken" | "accessTokenSecret"> {
+}

@@ -1,25 +1,38 @@
 import {PostProps} from "@/components/specific/dashboard/Post";
 import api from "@/helpers/api";
+import {AxiosError} from "axios";
 
 export class PostStream {
     account: IAccount;
+    type: string = "home";
+    profile?: IPublicUser;
     streamCursor: {
         min_id?: string,
         max_id?: string,
         since_id?: string,
         limit?: number,
+        user_id?: string,
     } = {};
 
-    constructor(account: IAccount) {
+    constructor(account: IAccount, type: string, profile?: IPublicUser) {
         this.account = account;
+        if (type === "user" && !profile) {
+            throw new Error("Missing profile for user timeline.");
+        }
+        this.type = type;
+        this.profile = profile;
     }
 
-    async fetch(mode: string = "newer") {
+    async fetch(mode: string = "newer"): Promise<PostProps[]> {
         const query: typeof this.streamCursor = {
             limit: 20,
         };
+        let url = "/post";
+        if (this.type === "user") {
+            url = "/post/user";
+            query.user_id = this.profile?._id;
+        }
         if (mode === "newest") {
-
         } else if (mode === "newer") {
             query.min_id = this.streamCursor.min_id;
         } else if (mode === "older") {
@@ -27,13 +40,23 @@ export class PostStream {
         } else {
             throw new Error("Wrong mode.");
         }
-        const result = await api.get<RawPost[]>("/post", {
-            params: {
-                provider: this.account.provider,
-                endpoint: this.account.endpoint,
-                ...query,
+        let result: RawPost[];
+        try {
+            result = await api.get<RawPost[]>(url, {
+                params: {
+                    provider: this.account.provider,
+                    endpoint: this.account.endpoint,
+                    ...query,
+                }
+            }).then(res => res.data);
+        } catch (e) {
+            if (e instanceof AxiosError) {
+                if (e.status === 404) {
+                    return [];
+                }
             }
-        }).then(res => res.data);
+            throw e;
+        }
         result.sort((p1, p2) => p2.post_id.localeCompare(p1.post_id));
         if (result.length > 0) {
             if (mode === "newest") {
@@ -48,9 +71,6 @@ export class PostStream {
         }
         return result.map(rawPost => {
             return {
-                connectionInfo: {
-                    displayName: rawPost.provider_account.display_name,
-                },
                 provider: rawPost.provider,
                 postData: {
                     providerPostId: rawPost.post_id,
@@ -64,7 +84,6 @@ export class PostStream {
                     attachments: rawPost.attachments,
                 },
                 directUrl: rawPost.url,
-                isResolved: false,
                 providerUserInfo: {
                     userName: rawPost.provider_account.username,
                     id: rawPost.provider_account.id,

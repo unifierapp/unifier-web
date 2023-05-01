@@ -46,10 +46,9 @@ function HeadContent() {
 export default function MyApp({Component, pageProps}: AppPropsWithLayout) {
     // Use the layout defined at the page level, if available
     const router = useRouter();
-
     const getLayout = Component.getLayout ?? ((page) => page);
 
-    const modalMappings: Record<string, () => React.ReactNode> = {
+    const modalMappings: Record<string, () => JSX.Element> = {
         settings: SettingsLayout,
     };
 

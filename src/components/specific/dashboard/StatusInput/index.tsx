@@ -33,7 +33,8 @@ export default function StatusInput() {
         <img className={classes.profilePicture} src={user?.profilePictureUrl ?? test.src} alt={"Poster"}></img>
         <label className={classes.label}>
             <div className={classes.textareaContainer} ref={containerRef}>
-            <textarea className={classes.textarea} onInput={autoResize} placeholder={"Write something to your connected platforms..."}
+            <textarea className={classes.textarea} onInput={autoResize}
+                      placeholder={"Write something to your connected platforms..."}
                       ref={textareaRef}></textarea>
             </div>
         </label>

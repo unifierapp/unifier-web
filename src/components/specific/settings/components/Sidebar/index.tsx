@@ -73,12 +73,16 @@ function SidebarLink(props: SidebarLinkProps) {
         toast = <Toast className={props.toastClassName || ""}>{result}</Toast>;
     }
 
-    const url = new URL(pathName, location.origin);
-    url.searchParams.set("modal_type", "settings");
-    url.searchParams.set("settings_tab", props.id);
-
     return <li>
-        <Link href={url.toString()} as={`/settings/${props.id}`} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
+        <Link href={{
+            pathname: pathName,
+            query: {
+                ...router.query,
+                modal_type: "settings",
+                settings_tab: props.id,
+            }
+        }} as={`/settings/${props.id}`} shallow={true}
+              className={`${classes.link} ${active ? classes.activeLink : ""}`}>
             <img src={props.icon.src} alt={props.description}
                  className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>

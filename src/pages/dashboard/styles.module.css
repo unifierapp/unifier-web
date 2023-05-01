@@ -9,11 +9,3 @@
 .welcomeHeading {
     @apply text-[1.25rem] font-[600]
 }
-
-.welcomeSectionRight {
-    @apply flex-none flex flex-col justify-center gap-[4px]
-}
-
-.logoutButton {
-    @apply text-warning
-}

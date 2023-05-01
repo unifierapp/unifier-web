@@ -30,8 +30,8 @@ const ProfileSettings = function () {
         <Section onSubmit={e => {
             e.preventDefault();
         }} className={classes.profilePictureSection}>
-            <Image src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128}
-                   className={classes.profilePicture}></Image>
+            <img src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128}
+                 className={classes.profilePicture}></img>
             <div className={classes.profilePictureFormContents}>
                 <SecondaryHeading>Profile Picture</SecondaryHeading>
                 <p>Your profile picture is displayed everywhere, and helps identify you. Go ahead and put on a bright
