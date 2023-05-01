@@ -3,7 +3,7 @@ import {UserContext} from "@/contexts/UserContext";
 import api from "@/helpers/api";
 import trash from "@/icons/trash.svg";
 import classes from "./styles.module.css";
-import Button from "@/components/specific/settings/Button";
+import Button from "@/components/specific/settings/components/Button";
 
 function DecentralizedAccount(props: { provider: string, endpoint: string, displayName: string }) {
     const {refresh} = React.useContext(UserContext);

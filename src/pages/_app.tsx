@@ -7,6 +7,8 @@ import {AppProps} from "next/app";
 import {Analytics} from "@vercel/analytics/react";
 import favicon from "@/icons/favicon.png";
 import og from "@/assets/og.png";
+import SettingsLayout from "@/components/specific/settings/components/Layout";
+import {useRouter} from "next/router";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: React.ReactElement) => React.ReactNode
@@ -43,13 +45,22 @@ function HeadContent() {
 
 export default function MyApp({Component, pageProps}: AppPropsWithLayout) {
     // Use the layout defined at the page level, if available
+    const router = useRouter();
+
     const getLayout = Component.getLayout ?? ((page) => page);
+
+    const modalMappings: Record<string, () => React.ReactNode> = {
+        settings: SettingsLayout,
+    };
+
+    const AdditionalModel = modalMappings[router.query.modal_type?.toString() ?? ""];
 
     return <>
         <Analytics></Analytics>
         <HeadContent></HeadContent>
         <UserWrapper>
             {getLayout(<Component {...pageProps} />)}
+            {AdditionalModel ? <AdditionalModel></AdditionalModel> : null}
         </UserWrapper>
     </>;
 }

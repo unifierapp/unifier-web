@@ -1,6 +1,6 @@
 import BigFormField from "@/components/ui/inputs/BigFormField";
 import {OAuthLink} from "@/components/user/OAuthLink";
-import {InputAndButtonContainer} from "@/components/specific/settings/Input";
+import {InputAndButtonContainer} from "@/components/specific/settings/components/Input";
 import React from "react";
 import {domainToUrl} from "@/helpers/url";
 

@@ -15,11 +15,11 @@ import {UserContext} from "@/contexts/UserContext";
 
 interface SidebarLinkProps {
     href: string,
+    as?: string,
     icon: { src: string },
     description: string,
     toastClassName?: string
 }
-
 const links: SidebarLinkProps[] = [
     {
         href: "/dashboard",
@@ -40,11 +40,12 @@ const links: SidebarLinkProps[] = [
         href: "/notifications",
         icon: notifications,
         description: "Notifications",
-    }, */ 
+    }, */
 ];
 const miscLinks: SidebarLinkProps[] = [
     {
-        href: "/settings",
+        href: "?modal_type=settings&settings_tab=account",
+        as: "/settings",
         icon: settings,
         description: "Settings"
     },
@@ -54,11 +55,6 @@ const miscLinks: SidebarLinkProps[] = [
         description: "What's New",
         toastClassName: classes.orangeToast
     },
-    // {
-    //     href: "/download",
-    //     icon: download,
-    //     description: "Download App",
-    // },
     {
         href: "/logout",
         icon: logout,
@@ -78,11 +74,11 @@ function SidebarLink(props: SidebarLinkProps) {
     const result = getToastMapping[props.href]?.();
     let toast;
     if (result !== undefined) {
-        toast = <Toast className={props.toastClassName}>{result}</Toast>;
+        toast = <Toast className={props.toastClassName || ""}>{result}</Toast>;
     }
 
     return <li>
-        <Link href={props.href} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
+        <Link as={props.as as string} href={props.href} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
             <img src={props.icon.src} alt={props.description}
                  className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>

@@ -1,16 +1,13 @@
 import React from "react";
-import {NextPageWithLayout} from "@/pages/_app";
-import SettingsLayout from "@/components/specific/settings/Layout";
-import DashboardLayout from "@/components/specific/dashboard/Layout";
-import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/Heading";
-import Section from "@/components/specific/settings/Section";
+import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/components/Heading";
+import Section from "@/components/specific/settings/components/Section";
 import BigFormField from "@/components/ui/inputs/BigFormField";
-import Button, {ButtonFrame} from "@/components/specific/settings/Button";
+import Button, {ButtonFrame} from "@/components/specific/settings/components/Button";
 import api from "@/helpers/api";
 import {formToJSON} from "axios";
 import {UserContext} from "@/contexts/UserContext";
 
-const AccountSettings: NextPageWithLayout = function () {
+const AccountSettings = function () {
     const {refresh} = React.useContext(UserContext);
 
     async function changeEmail(form: HTMLFormElement) {
@@ -60,12 +57,3 @@ const AccountSettings: NextPageWithLayout = function () {
     </div>;
 };
 export default AccountSettings;
-
-AccountSettings.getLayout = function (page) {
-    return <>
-        <DashboardLayout></DashboardLayout>
-        <SettingsLayout>
-            {page}
-        </SettingsLayout>
-    </>;
-};

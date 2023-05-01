@@ -9,11 +9,12 @@ import voucher from "@/icons/voucher.svg";
 import notifications from "@/icons/notifications.svg";
 import Link from "next/link";
 import React from "react";
-import {usePathname} from 'next/navigation';
+import {useSearchParams} from 'next/navigation';
 import classes from "./styles.module.css";
+import {useRouter} from "next/router";
 
 interface SidebarLinkProps {
-    href: string,
+    id: string,
     icon: { src: string },
     description: string,
     toastClassName?: string
@@ -21,45 +22,35 @@ interface SidebarLinkProps {
 
 const section1Links: SidebarLinkProps[] = [
     {
-        href: "/settings/account",
+        id: "account",
         icon: profile,
         description: "Account",
     },
     {
-        href: "/settings/profile",
+        id: "profile",
         icon: eye,
         description: "Profile",
     },
     {
-        href: "/settings/connections",
+        id: "connections",
         icon: squares,
         description: "Connections",
     },
     {
-        href: "/settings/appearance",
+        id: "appearance",
         icon: paintbrush,
         description: "Appearance",
     },
- /*     {
-        href: "/settings/notifications",
-        icon: notifications,
-        description: "Notifications",
-    },
-    {
-        href: "/settings/billing",
-        icon: money,
-        description: "Billing",
-    }, */ 
 ];
 
 const section2Links: SidebarLinkProps[] = [
     {
-        href: "/settings/invites",
+        id: "invites",
         icon: voucher,
         description: "Invites",
     },
     {
-        href: "/settings/feedback",
+        id: "feedback",
         icon: chat,
         description: "Send feedback",
     },
@@ -67,21 +58,27 @@ const section2Links: SidebarLinkProps[] = [
 
 
 function SidebarLink(props: SidebarLinkProps) {
-    const path = usePathname();
-    const active = path.startsWith(props.href);
+    const router = useRouter();
+    const pathName = router.pathname;
+    const params = useSearchParams();
+    const active = params.get("modal_type") === "settings" && params.get("settings_tab") === props.id;
 
     const getToastMapping: Record<string, () => string | number | void> = {
-        "/changelogs": () => "New",
+        "changelogs": () => "New",
     };
 
-    const result = getToastMapping[props.href]?.();
+    const result = getToastMapping[props.id]?.();
     let toast;
     if (result !== undefined) {
-        toast = <Toast className={props.toastClassName}>{result}</Toast>;
+        toast = <Toast className={props.toastClassName || ""}>{result}</Toast>;
     }
 
+    const url = new URL(pathName, location.origin);
+    url.searchParams.set("modal_type", "settings");
+    url.searchParams.set("settings_tab", props.id);
+
     return <li>
-        <Link href={props.href} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
+        <Link href={url.toString()} as={`/settings/${props.id}`} className={`${classes.link} ${active ? classes.activeLink : ""}`}>
             <img src={props.icon.src} alt={props.description}
                  className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>
@@ -97,7 +94,7 @@ function Separator() {
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
         {props.links.map((info) => {
-            return <SidebarLink {...info} key={info.href}></SidebarLink>;
+            return <SidebarLink {...info} key={info.id}></SidebarLink>;
         })}
     </ul>;
 }

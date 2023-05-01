@@ -1,17 +1,14 @@
 import React from "react";
-import {NextPageWithLayout} from "@/pages/_app";
-import SettingsLayout from "@/components/specific/settings/Layout";
-import DashboardLayout from "@/components/specific/dashboard/Layout";
-import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/Heading";
-import Section from "@/components/specific/settings/Section";
-import Button, {ButtonFrame} from "@/components/specific/settings/Button";
+import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/components/Heading";
+import Section from "@/components/specific/settings/components/Section";
+import Button, {ButtonFrame} from "@/components/specific/settings/components/Button";
 import {UserContext} from "@/contexts/UserContext";
 import classes from "./styles.module.css";
 import api from "@/helpers/api";
 import axios from "axios";
 import Image from "next/image";
 
-const ProfileSettings: NextPageWithLayout = function () {
+const ProfileSettings = function () {
     const {user, refresh} = React.useContext(UserContext);
     const inputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -33,7 +30,8 @@ const ProfileSettings: NextPageWithLayout = function () {
         <Section onSubmit={e => {
             e.preventDefault();
         }} className={classes.profilePictureSection}>
-            <Image src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128} className={classes.profilePicture}></Image>
+            <Image src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128}
+                   className={classes.profilePicture}></Image>
             <div className={classes.profilePictureFormContents}>
                 <SecondaryHeading>Profile Picture</SecondaryHeading>
                 <p>Your profile picture is displayed everywhere, and helps identify you. Go ahead and put on a bright
@@ -60,12 +58,3 @@ const ProfileSettings: NextPageWithLayout = function () {
     </div>;
 };
 export default ProfileSettings;
-
-ProfileSettings.getLayout = function (page) {
-    return <>
-        <DashboardLayout></DashboardLayout>
-        <SettingsLayout>
-            {page}
-        </SettingsLayout>
-    </>;
-};
