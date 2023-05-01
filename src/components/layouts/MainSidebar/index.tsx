@@ -46,7 +46,12 @@ const miscLinks: SidebarLinkProps[] = [
         description: "Settings"
     },
     {
-        href: "/changelogs",
+        href: {
+            query: {
+                modal_type: "changelogs",
+            }
+        },
+        as: "/changelogs",
         icon: changelogs,
         description: "What's New",
         toastClassName: classes.orangeToast
@@ -97,7 +102,7 @@ function Separator() {
 function SidebarLinks(props: { links: SidebarLinkProps[] }) {
     return <ul className={classes.navigationItems}>
         {props.links.map((info, index) => {
-            return <li>
+            return <li key={index}>
                 <SidebarLink {...info} key={index}></SidebarLink>
             </li>;
         })}
