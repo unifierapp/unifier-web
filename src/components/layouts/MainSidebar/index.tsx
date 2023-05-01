@@ -64,7 +64,7 @@ const miscLinks: SidebarLinkProps[] = [
 
 
 function SidebarLink(props: SidebarLinkProps) {
-    const path = usePathname();
+    const path = usePathname() ?? "";
     const active = path.startsWith(props.href);
 
     const getToastMapping: Record<string, () => string | number | void> = {

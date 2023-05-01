@@ -96,17 +96,20 @@ export class PostStreamCluster {
             return;
         }
         this.running = true;
-        const promises = Array.from(this.streams).map(stream => stream.fetch(mode));
-        const result = (await Promise.all(promises)).flatMap(postStreamResult => postStreamResult);
-        result.sort((p1, p2) => +p2.postData.lastUpdatedAt - +p1.postData.lastUpdatedAt);
-        if (mode === "newest") {
-            this.posts = [];
-            this.posts.unshift(...result);
-        } else if (mode === "newer") {
-            this.posts.unshift(...result);
-        } else if (mode === "older") {
-            this.posts.push(...result);
+        try {
+            const promises = Array.from(this.streams).map(stream => stream.fetch(mode));
+            const result = (await Promise.all(promises)).flatMap(postStreamResult => postStreamResult);
+            result.sort((p1, p2) => +p2.postData.lastUpdatedAt - +p1.postData.lastUpdatedAt);
+            if (mode === "newest") {
+                this.posts = [];
+                this.posts.unshift(...result);
+            } else if (mode === "newer") {
+                this.posts.unshift(...result);
+            } else if (mode === "older") {
+                this.posts.push(...result);
+            }
+        } finally {
+            this.running = false;
         }
-        this.running = false;
     }
 }

@@ -29,7 +29,7 @@ export default function PostViewer() {
 
     return <section className={classes.postViewer} ref={sectionContainerRef}>
         <InfiniteScroller loadMore={() => {
-            update("older");
+            update("older").then();
         }} hasMore={posts.length > 0} useWindow={false} getScrollParent={() => sectionContainerRef.current}>
             {
                 posts.map((postProps, index) => {
