@@ -21,7 +21,6 @@ const AccountSettings = function () {
         try {
             await api.patch("/user/password", json);
         } catch (e) {
-            console.error(e);
         }
     }
 

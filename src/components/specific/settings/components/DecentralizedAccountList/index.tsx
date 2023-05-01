@@ -23,7 +23,7 @@ function DecentralizedAccount(props: { provider: string, endpoint: string, displ
         <Button onClick={event => {
             event.preventDefault();
             runUnlink().then();
-        }} >
+        }}>
             <img src={trash.src} alt={"Unlink this account"}/>
         </Button>
     </li>;
@@ -34,7 +34,6 @@ export default function DecentralizedAccountList(props: { provider: string }) {
 
     return <ul className={classes.accounts}>
         {accounts.filter(account => {
-            console.log(account, account.provider === props.provider && account.endpoint);
             return account.provider === props.provider && account.endpoint;
         }).map(account => {
             return <DecentralizedAccount provider={account.provider} endpoint={account.endpoint!}

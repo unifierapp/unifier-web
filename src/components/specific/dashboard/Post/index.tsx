@@ -37,11 +37,6 @@ export interface PostProps {
 }
 
 export default function Post(props: PostProps) {
-    if (props.postData.attachments?.length ?? 0 > 0) {
-        for (let attachment of props.postData.attachments ?? []) {
-            console.log(attachment);
-        }
-    }
     if (props.postData) {
         const relativeTime = dayjs(props.postData.lastUpdatedAt).fromNow();
 

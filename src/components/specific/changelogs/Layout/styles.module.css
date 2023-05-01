@@ -1,0 +1,11 @@
+.header {
+    @apply flex justify-between gap-[16px] pb-4 border-b-2 border-form-border
+}
+
+.heading {
+    @apply flex flex-1 font-[700] text-xl leading-6
+}
+
+.changelogContainer {
+    @apply flex flex-1 overflow-auto py-[16px]
+}

@@ -1,0 +1,20 @@
+.markdown h1 {
+    @apply font-[700] leading-6 text-2xl my-4
+}
+
+.markdown p {
+    @apply my-4
+}
+
+.markdown ul {
+    list-style: circle;
+    padding-left: 2rem;
+}
+
+.markdown a {
+    @apply underline;
+}
+
+.markdown img {
+    @apply block w-full;
+}

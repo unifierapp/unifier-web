@@ -9,6 +9,7 @@ import favicon from "@/icons/favicon.png";
 import og from "@/assets/og.png";
 import SettingsLayout from "@/components/specific/settings/components/Layout";
 import {useRouter} from "next/router";
+import ChangelogLayout from "@/components/specific/changelogs/Layout";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: React.ReactElement) => React.ReactNode
@@ -50,6 +51,7 @@ export default function MyApp({Component, pageProps}: AppPropsWithLayout) {
 
     const modalMappings: Record<string, () => JSX.Element> = {
         settings: SettingsLayout,
+        changelogs: ChangelogLayout,
     };
 
     const AdditionalModel = modalMappings[router.query.modal_type?.toString() ?? ""];
