@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./styles.module.css";
+import Image, {StaticImageData} from "next/image";
 
 export interface BigFormFieldProps {
     label?: string,
     placeholder?: string,
-    icon?: { src: string },
+    icon?: StaticImageData,
     type?: string,
     name?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -20,7 +21,7 @@ const BigFormField = React.forwardRef<HTMLInputElement, BigFormFieldProps>(funct
         <div className={classes.inputContainer}>
             <input onBlur={props.onBlur} onChange={props.onChange} name={props.name} className={classes.input}
                    type={props.type} placeholder={props.placeholder} ref={ref} id={id}></input>
-            {props.icon ? <img src={props.icon.src} alt={props.label} className={classes.icon}/> : <></>}
+            {props.icon ? <Image src={props.icon} alt={props.label || ""} className={classes.icon}/> : <></>}
         </div>
     </div>;
 });

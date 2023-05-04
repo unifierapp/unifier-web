@@ -1,6 +1,7 @@
 import linkedin from "@/icons/providers/linkedin.svg";
 import twitter from "@/icons/providers/twitter.svg";
 import mastodon from "@/icons/providers/mastodon.svg";
+import Image, {StaticImageData} from "next/image";
 
 export interface PostRedirectProps {
     provider: string;
@@ -10,7 +11,7 @@ export interface PostRedirectProps {
 }
 
 export default function PostRedirect(props: PostRedirectProps) {
-    const mapping: Record<string, { url: string, icon: { src: string } }> = {
+    const mapping: Record<string, { url: string, icon: StaticImageData }> = {
         twitter: {
             url: `https://twitter.com/${props.userName}/status/${props.postId}`,
             icon: twitter
@@ -28,6 +29,6 @@ export default function PostRedirect(props: PostRedirectProps) {
     const data = mapping[props.provider];
     if (!data) return <div></div>;
     return <a href={data.url}>
-        <img src={data.icon.src} alt={`View post on ${props.provider.toUpperCase()}`}></img>
+        <Image src={data.icon} alt={`View post on ${props.provider.toUpperCase()}`}></Image>
     </a>;
 }
