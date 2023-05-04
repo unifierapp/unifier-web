@@ -57,13 +57,14 @@ export default function LandingPage() {
                         </div>
                         <ul className={classes.providerIconFrame}>
                             {SUPPORTED_PROVIDER_ICONS.map(icon => {
-                                return <li key={icon.icon.src}><img className={classes.providerIcon} src={icon.icon.src} alt={icon.name}/>
+                                return <li key={icon.icon.src}><Image className={classes.providerIcon} src={icon.icon}
+                                                                      alt={icon.name}/>
                                 </li>;
                             })}
                         </ul>
                     </div>
                     <div className={classes.heroImageContainer}>
-                        <Image src={macbook.src} alt={"Mockup of Unifier on Macbook Pro 16'"} width={3280} height={1984}
+                        <Image src={macbook} alt={"Mockup of Unifier on Macbook Pro 16'"} width={3280} height={1984}
                                className={classes.heroImage}></Image>
                     </div>
                 </main>

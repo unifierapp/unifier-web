@@ -1,0 +1,7 @@
+.notFound {
+    @apply font-[600] text-8xl
+}
+
+.logo {
+    @apply absolute bottom-[50px]
+}

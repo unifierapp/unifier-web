@@ -4,6 +4,7 @@ import api from "@/helpers/api";
 import trash from "@/icons/trash.svg";
 import classes from "./styles.module.css";
 import Button from "@/components/specific/settings/components/Button";
+import Image from "next/image";
 
 function DecentralizedAccount(props: { provider: string, endpoint: string, displayName: string }) {
     const {refresh} = React.useContext(UserContext);
@@ -24,7 +25,7 @@ function DecentralizedAccount(props: { provider: string, endpoint: string, displ
             event.preventDefault();
             runUnlink().then();
         }}>
-            <img src={trash.src} alt={"Unlink this account"}/>
+            <Image src={trash} alt={"Unlink this account"}/>
         </Button>
     </li>;
 }

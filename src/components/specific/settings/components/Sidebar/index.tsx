@@ -12,10 +12,11 @@ import React from "react";
 import {useSearchParams} from 'next/navigation';
 import classes from "./styles.module.css";
 import {useRouter} from "next/router";
+import Image, {StaticImageData} from "next/image";
 
 interface SidebarLinkProps {
     id: string,
-    icon: { src: string },
+    icon: StaticImageData,
     description: string,
     toastClassName?: string
 }
@@ -83,8 +84,8 @@ function SidebarLink(props: SidebarLinkProps) {
             }
         }} as={`/settings/${props.id}`} shallow={true}
               className={`${classes.link} ${active ? classes.activeLink : ""}`}>
-            <img src={props.icon.src} alt={props.description}
-                 className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
+            <Image src={props.icon} alt={props.description}
+                   className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>
             {toast}
         </Link>

@@ -6,9 +6,12 @@ import Button, {ButtonFrame} from "@/components/specific/settings/components/But
 import api from "@/helpers/api";
 import {formToJSON} from "axios";
 import {UserContext} from "@/contexts/UserContext";
+import Link from "@/components/specific/settings/components/Link";
+import {useRouter} from "next/router";
 
 const AccountSettings = function () {
     const {refresh} = React.useContext(UserContext);
+    const {query} = useRouter();
 
     async function changeEmail(form: HTMLFormElement) {
         const json = formToJSON(form);
@@ -23,7 +26,6 @@ const AccountSettings = function () {
         } catch (e) {
         }
     }
-
 
     return <div>
         <PrimaryHeading>My Account</PrimaryHeading>
@@ -51,7 +53,12 @@ const AccountSettings = function () {
         <Section>
             <SecondaryHeading>Danger Zone</SecondaryHeading>
             <p>Make changes to your account. Some or all of your data will be lost.</p>
-            <ButtonFrame><Button>Delete account</Button></ButtonFrame>
+            <ButtonFrame><Link href={{
+                query: {
+                    ...query,
+                    settings_tab: "delete_account",
+                }
+            }} shallow={true} as={"/settings/delete_account"}>Delete account</Link></ButtonFrame>
         </Section>
     </div>;
 };

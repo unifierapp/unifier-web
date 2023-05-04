@@ -12,11 +12,12 @@ import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
 import {useRouter} from "next/router";
 import {UrlObject} from "url";
+import Image, {StaticImageData} from "next/image";
 
 interface SidebarLinkProps {
     href: string | UrlObject,
     as?: string,
-    icon: { src: string },
+    icon: StaticImageData,
     description: string,
     toastClassName?: string
 }
@@ -88,8 +89,8 @@ function SidebarLink(props: SidebarLinkProps) {
         }
     }}
                  className={`${classes.link} ${active ? classes.activeLink : ""}`}>
-        <img src={props.icon.src} alt={props.description}
-             className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
+        <Image src={props.icon} alt={props.description}
+               className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
         <span className={classes.linkDescription}>{props.description}</span>
         {toast}
     </Link>;
@@ -114,8 +115,8 @@ function SidebarAccount() {
 
     if (user) {
         return <Link href={"/profile"} className={`${classes.link} ${classes.account}`}>
-            <img src={user.profilePictureUrl} alt={"Profile picture"}
-                 className={`${classes.profilePicture}`}/>
+            <Image src={user.profilePictureUrl} width={24} height={24} alt={"Profile picture"}
+                   className={`${classes.profilePicture}`}/>
             <span className={classes.linkDescription}>{user.displayName}</span>
         </Link>;
     }

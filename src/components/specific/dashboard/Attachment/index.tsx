@@ -1,4 +1,5 @@
 import classes from "./styles.module.css";
+import Image from "next/image";
 
 interface AttachmentVariant {
     content_type: string,
@@ -11,6 +12,8 @@ export interface AttachmentProps {
     url: string,
     alt?: string,
     variants?: AttachmentVariant[],
+    width?: number,
+    height?: number,
 }
 
 export default function Attachment(props: AttachmentProps) {
@@ -27,6 +30,15 @@ export default function Attachment(props: AttachmentProps) {
             }) : null}
         </video>;
     } else {
-        return <img src={props.url} alt={props.alt} className={classes.attachment}/>;
+        if (props.width && props.height) {
+            return <div>
+                <Image width={props.width} height={props.height} src={props.url} alt={props.alt ?? ""}
+                       className={classes.attachment}/>
+            </div>;
+        }
+        return <div className={classes.relativeImageContainer}>
+            <Image fill={true} src={props.url} alt={props.alt ?? ""}
+                   className={classes.attachment}/>
+        </div>;
     }
 }

@@ -9,6 +9,7 @@ import ProfileSettings from "@/components/specific/settings/pages/profile";
 import ConnectionSettings from "@/components/specific/settings/pages/connections";
 import InviteSettings from "@/components/specific/settings/pages/invites";
 import FeedbackDialog from "@/components/specific/settings/pages/feedback";
+import DeleteAccount from "@/components/specific/settings/pages/deleteAccount";
 
 export default function SettingsLayout() {
     const router = useRouter();
@@ -19,6 +20,7 @@ export default function SettingsLayout() {
         connections: ConnectionSettings,
         invites: InviteSettings,
         feedback: FeedbackDialog,
+        delete_account: DeleteAccount,
     };
 
     let Component;

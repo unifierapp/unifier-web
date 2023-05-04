@@ -38,7 +38,7 @@ export default function ChangelogLayout() {
         <Modal>
             <div className={classes.header}>
                 <h1 className={classes.heading}>What&apos;s new?</h1>
-                <button onClick={close}><Image width={24} height={24} src={cross.src} alt={"Close"} title={"Close"}/>
+                <button onClick={close}><Image src={cross} alt={"Close"} title={"Close"}/>
                 </button>
             </div>
             <ul className={classes.changelogContainer}>

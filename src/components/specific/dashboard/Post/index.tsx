@@ -5,6 +5,7 @@ import Attachment, {AttachmentProps} from "@/components/specific/dashboard/Attac
 import EngagementInfo from "@/components/specific/dashboard/Engagement";
 import PostRedirect from "@/components/specific/dashboard/PostRedirect";
 import HTMLReactParser from "html-react-parser";
+import Image from "next/image";
 
 dayjs.extend(relativeTime);
 
@@ -48,9 +49,10 @@ export default function Post(props: PostProps) {
         const attachmentClassName = attachmentClassNames.join(" ");
 
         return <article className={classes.postContainer}>
-            <img src={props.connectionInfo?.profileImageUrl ?? props.providerUserInfo.profileImageUrl}
-                 alt={"Poster icon"}
-                 className={classes.profilePicture}></img>
+            <Image width={128} height={128}
+                   src={props.connectionInfo?.profileImageUrl ?? props.providerUserInfo.profileImageUrl}
+                   alt={"Poster icon"}
+                   className={classes.profilePicture}></Image>
             <div className={classes.postContent}>
                 <div className={classes.postTextContent}>
                     <div className={classes.topBar}>

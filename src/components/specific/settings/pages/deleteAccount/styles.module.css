@@ -1,0 +1,23 @@
+.dialog {
+    @apply rounded-[4px] bg-secondary-background gap-[10px] max-w-[400px] flex flex-col p-[20px] border-[2px] border-form-border
+}
+
+.heading {
+    @apply text-xl leading-6 font-[700]
+}
+
+.message {
+    @apply text-secondary
+}
+
+.frame {
+    @apply flex gap-[10px]
+}
+
+.button {
+    @apply px-[16px] py-[6px]
+}
+
+.deleteButton {
+    @apply text-warning
+}

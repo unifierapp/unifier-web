@@ -2,6 +2,7 @@ import classes from "./styles.module.css";
 import test from "@/defaults/posterIcon.png";
 import React from "react";
 import {UserContext} from "@/contexts/UserContext";
+import Image from "next/image";
 
 export default function StatusInput() {
     const {user} = React.useContext(UserContext);
@@ -30,7 +31,8 @@ export default function StatusInput() {
     }, []);
 
     return <form className={classes.inputContainer}>
-        <img className={classes.profilePicture} src={user?.profilePictureUrl ?? test.src} alt={"Poster"}></img>
+        <Image width={96} height={96} className={classes.profilePicture} src={user?.profilePictureUrl ?? test.src}
+               alt={"Poster"}></Image>
         <label className={classes.label}>
             <div className={classes.textareaContainer} ref={containerRef}>
             <textarea className={classes.textarea} onInput={autoResize}

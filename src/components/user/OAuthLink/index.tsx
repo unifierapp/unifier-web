@@ -13,8 +13,9 @@ import {capitalize} from "@/helpers/string";
 import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
 import api from "@/helpers/api";
+import Image, {StaticImageData} from "next/image";
 
-const icon_mapping: Record<string, { src: string }> = {
+const icon_mapping: Record<string, StaticImageData> = {
     twitter: twitter,
     linkedin: linkedin,
     mastodon: mastodon,
@@ -50,7 +51,7 @@ export function OAuthLink({
 
     if (decentralized) {
         const linkInner = <>
-            <img src={icon.src} alt={provider}/>
+            <Image src={icon} alt={provider}/>
             Link a new {capitalize(provider)} account
         </>;
         if (!endpoint) {
@@ -67,7 +68,7 @@ export function OAuthLink({
         </div>;
     } else if (!lookup.linked) {
         return <div className={classes.oAuthLink}>
-            <img src={icon.src} alt={provider}/>
+            <Image src={icon} alt={provider}/>
             Link your {capitalize(provider)} account
             <LinkLayer href={getBackendUrl(`/auth/${provider}`)}></LinkLayer>
         </div>;
@@ -75,13 +76,13 @@ export function OAuthLink({
         const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
         unlinkUrl.searchParams.set("provider", provider);
         return <div className={classes.oAuthLink}>
-            <img src={icon.src} alt={provider}/>
+            <Image src={icon} alt={provider}/>
             <span className={classes.description}>Signed in as {lookup.displayName}</span>
             <button onClick={(e) => {
                 e.preventDefault();
                 runUnlink(unlinkUrl.toString()).then();
             }}>
-                <img src={cross.src} alt={`Unlink ${capitalize(provider)} account`}/>
+                <Image src={cross} alt={`Unlink ${capitalize(provider)} account`}/>
             </button>
         </div>;
     }
