@@ -2,17 +2,16 @@ import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOv
 import classes from "./styles.module.css";
 import Button from "@/components/specific/settings/components/Button";
 import Link from "@/components/specific/settings/components/Link";
-import {useRouter} from "next/router";
 import api from "@/helpers/api";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 export default function DeleteAccount() {
-    const {query} = useRouter();
+    const router = useRouter();
 
     const goBackLink = {
         href: {
             query: {
-                ...query,
+                ...router.query,
                 settings_tab: "account"
             }
         },
@@ -21,7 +20,7 @@ export default function DeleteAccount() {
 
     async function deleteAccount() {
         await api.delete("/user");
-        // location.replace("/");
+        location.replace("/");
     }
 
     return <FullScreenOverlayWithCenteredItem opaqueBackdrop={true} onOuterClick={e => {
