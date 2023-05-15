@@ -3,7 +3,7 @@
 }
 
 .relativeImageContainer {
-    @apply aspect-video
+    @apply aspect-video relative
 }
 
 .relative {
