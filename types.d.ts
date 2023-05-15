@@ -46,6 +46,15 @@ declare interface RawPost {
     }
 }
 
+declare interface PostResult {
+    data: RawPost[],
+    pagination: {
+        max_id?: string,
+        min_id?: string,
+    }
+}
+
+
 declare interface Attachment {
     type: string,
     url: string,

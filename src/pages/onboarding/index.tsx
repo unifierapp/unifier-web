@@ -41,8 +41,8 @@ export default function Onboarding() {
                     setMastodonEndpoint(newValue);
                 }}></SmallField>
                 <OAuthLink provider={"mastodon"} decentralized={true} endpoint={mastodonEndpoint}></OAuthLink>
-                <OAuthLink provider={"linkedin"}></OAuthLink>
-                <OAuthLink provider={"instagram"}></OAuthLink>
+                <OAuthLink provider={"linkedin"} requiresPassword={true}></OAuthLink>
+                <OAuthLink provider={"instagram"} requiresPassword={true}></OAuthLink>
                 <OAuthLink provider={"facebook"}></OAuthLink>
                 <Separator></Separator>
                 <FormLink href={"/dashboard"} onClick={finishOnboarding}>Continue</FormLink>

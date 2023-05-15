@@ -1,0 +1,11 @@
+.linkAccountOverlay {
+    @apply z-20 backdrop-blur
+}
+
+.linkAccountModal {
+    @apply rounded-[8px] bg-secondary-background p-[24px] border-[2px] border-form-border flex flex-col gap-[16px]
+}
+
+.loginButton {
+    @apply w-full
+}

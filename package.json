@@ -29,6 +29,7 @@
     "typescript": "5.0.3"
   },
   "devDependencies": {
-    "@types/react-infinite-scroller": "^1.2.3"
+    "@types/react-infinite-scroller": "^1.2.3",
+    "dotenv": "^16.0.3"
   }
 }

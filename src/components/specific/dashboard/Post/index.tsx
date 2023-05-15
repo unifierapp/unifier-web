@@ -63,7 +63,7 @@ export default function Post(props: PostProps) {
                             <span className={classes.relativeTime}>{relativeTime}</span>
                         </div>
                     </div>
-                    <div>
+                    <div className={classes.postTextContentInner}>
                         {HTMLReactParser(props.postData.content)}
                     </div>
                 </div>

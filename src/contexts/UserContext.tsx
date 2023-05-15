@@ -17,6 +17,8 @@ export function UserWrapper(props: React.PropsWithChildren<{}>) {
     const [user, setUser] = React.useState<IUser | null>(null);
     const [accounts, setAccounts] = React.useState<IAccount[]>([]);
 
+    console.log(user);
+
     React.useEffect(() => {
         if (!loaded) {
             load().then();

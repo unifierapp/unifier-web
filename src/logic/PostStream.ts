@@ -40,9 +40,9 @@ export class PostStream {
         } else {
             throw new Error("Wrong mode.");
         }
-        let result: RawPost[];
+        let result: PostResult;
         try {
-            result = await api.get<RawPost[]>(url, {
+            result = await api.get<PostResult>(url, {
                 params: {
                     provider: this.account.provider,
                     endpoint: this.account.endpoint,
@@ -51,25 +51,33 @@ export class PostStream {
             }).then(res => res.data);
         } catch (e) {
             if (e instanceof AxiosError) {
-                if (e.status === 404) {
+                if (e.response?.status === 404) {
+                    console.error(e);
                     return [];
                 }
             }
             throw e;
         }
-        result.sort((p1, p2) => p2.post_id.localeCompare(p1.post_id));
-        if (result.length > 0) {
+        const postData = result.data ?? [];
+        postData.sort((p1, p2) => p2.post_id.localeCompare(p1.post_id));
+        if (postData.length > 0) {
             if (mode === "newest") {
                 this.streamCursor = {};
-                this.streamCursor.min_id = result[0].post_id;
-                this.streamCursor.max_id = result[result.length - 1].post_id;
+                this.streamCursor.min_id = postData[0].post_id;
+                this.streamCursor.max_id = postData[postData.length - 1].post_id;
             } else if (mode === "newer") {
-                this.streamCursor.min_id = result[0].post_id;
+                this.streamCursor.min_id = postData[0].post_id;
             } else if (mode === "older") {
-                this.streamCursor.max_id = result[result.length - 1].post_id;
+                this.streamCursor.max_id = postData[postData.length - 1].post_id;
             }
         }
-        return result.map(rawPost => {
+        if (result.pagination?.max_id) {
+            this.streamCursor.max_id = result.pagination.max_id;
+        }
+        if (result.pagination?.min_id) {
+            this.streamCursor.min_id = result.pagination.min_id;
+        }
+        return postData.map(rawPost => {
             return {
                 provider: rawPost.provider,
                 postData: {
@@ -116,8 +124,11 @@ export class PostStreamCluster {
         }
         this.running = true;
         try {
-            const promises = Array.from(this.streams).map(stream => stream.fetch(mode));
-            const result = (await Promise.all(promises)).flatMap(postStreamResult => postStreamResult);
+            const promises = Array.from(this.streams).map(stream => {
+                return stream.fetch(mode);
+            });
+            const data = await Promise.all(promises);
+            const result = data.flatMap(postStreamResult => postStreamResult);
             result.sort((p1, p2) => +p2.postData.lastUpdatedAt - +p1.postData.lastUpdatedAt);
             if (mode === "newest") {
                 this.posts = [];
@@ -127,6 +138,7 @@ export class PostStreamCluster {
             } else if (mode === "older") {
                 this.posts.push(...result);
             }
+        } catch (e) {
         } finally {
             this.running = false;
         }

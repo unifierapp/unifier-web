@@ -1,6 +1,7 @@
 import linkedin from "@/icons/providers/linkedin.svg";
 import twitter from "@/icons/providers/twitter.svg";
 import mastodon from "@/icons/providers/mastodon.svg";
+import instagram from "@/icons/providers/instagram.svg";
 import Image, {StaticImageData} from "next/image";
 
 export interface PostRedirectProps {
@@ -23,6 +24,10 @@ export default function PostRedirect(props: PostRedirectProps) {
         mastodon: {
             url: props.directUrl ?? "",
             icon: mastodon,
+        },
+        instagram: {
+            url: props.directUrl ?? "",
+            icon: instagram,
         }
     };
 

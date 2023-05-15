@@ -11,14 +11,14 @@ import DecentralizedAccountList from "@/components/specific/settings/components/
 const ConnectionSettings = function () {
     return <div>
         <PrimaryHeading>My Account</PrimaryHeading>
-        <Section>
+        <Section isForm={false}>
             <SecondaryHeading>Centralized Accounts</SecondaryHeading>
             <p>Manage all of your centralized social media accounts, like Twitter, Instagram or Facebook.</p>
             <Grid className={classes.connectionGrid}>
                 <OAuthLink provider={"twitter"}></OAuthLink>
                 <OAuthLink provider={"facebook"}></OAuthLink>
-                <OAuthLink provider={"instagram"}></OAuthLink>
-                <OAuthLink provider={"linkedin"}></OAuthLink>
+                <OAuthLink provider={"instagram"} requiresPassword={true}></OAuthLink>
+                <OAuthLink provider={"linkedin"} requiresPassword={true}></OAuthLink>
             </Grid>
             <p>Can&apos;t find what you&apos;re looking for? <Link href="/feedback"
                                                                    className={classes.underlineLink}>Suggest a

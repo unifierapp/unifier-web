@@ -14,6 +14,7 @@ import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
 import api from "@/helpers/api";
 import Image, {StaticImageData} from "next/image";
+import LinkAccountModal from "@/components/specific/settings/components/LinkAccountModal";
 
 const icon_mapping: Record<string, StaticImageData> = {
     twitter: twitter,
@@ -28,9 +29,13 @@ function LinkLayer(props: React.ComponentPropsWithoutRef<"a"> & LinkProps) {
     return <Link {...props} className={`${classes.linkInner}`}></Link>;
 }
 
+function Button(props: React.ComponentPropsWithoutRef<"button">) {
+    return <button {...props} className={`${classes.linkInner}`}></button>;
+}
+
 export function OAuthLink({
-                              provider, endpoint, decentralized = false
-                          }: { provider: string, endpoint?: string, decentralized?: boolean }) {
+                              provider, endpoint, decentralized = false, requiresPassword = false
+                          }: { provider: string, endpoint?: string, decentralized?: boolean, requiresPassword?: boolean }) {
     const {accounts, refresh} = React.useContext(UserContext);
     const lookup = {
         linked: false,
@@ -43,6 +48,7 @@ export function OAuthLink({
         }
     }
     const icon = icon_mapping[provider] ?? add;
+    const [modalShown, setModalShown] = React.useState(false);
 
     async function runUnlink(url: string) {
         await api.delete(url);
@@ -67,11 +73,23 @@ export function OAuthLink({
             <LinkLayer href={url.toString()}></LinkLayer>
         </div>;
     } else if (!lookup.linked) {
-        return <div className={classes.oAuthLink}>
-            <Image src={icon} alt={provider}/>
-            Link your {capitalize(provider)} account
-            <LinkLayer href={getBackendUrl(`/auth/${provider}`)}></LinkLayer>
-        </div>;
+        if (requiresPassword) {
+            return <div className={classes.oAuthLink}>
+                <Image src={icon} alt={provider}/>
+                Link your {capitalize(provider)} account
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    setModalShown(true);
+                }}></Button>
+                {modalShown ? <LinkAccountModal provider={provider} onOuterClick={() => setModalShown(false)}/> : null}
+            </div>;
+        } else {
+            return <div className={classes.oAuthLink}>
+                <Image src={icon} alt={provider}/>
+                Link your {capitalize(provider)} account
+                <LinkLayer href={getBackendUrl(`/auth/${provider}`)}></LinkLayer>
+            </div>;
+        }
     } else {
         const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
         unlinkUrl.searchParams.set("provider", provider);

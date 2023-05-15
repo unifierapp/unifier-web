@@ -49,3 +49,7 @@
 .stats {
     @apply flex justify-between
 }
+
+.postTextContentInner {
+    word-break: break-word;
+}
