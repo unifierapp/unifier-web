@@ -10,11 +10,12 @@ export interface SmallFormFieldProps {
     name?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
     onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    className?: string,
 }
 
 const SmallFormField = React.forwardRef<HTMLInputElement, SmallFormFieldProps>(function SmallFormField(props, ref) {
     const id = React.useId();
-    return <div className={classes.container}>
+    return <div className={`${classes.container} ${props.className || ""}`}>
         {props.label ? <label htmlFor={id}>{props.label}</label> : null}
         <div className={classes.inputContainer}>
             <input onBlur={props.onBlur} onChange={props.onChange} name={props.name} className={classes.input}
