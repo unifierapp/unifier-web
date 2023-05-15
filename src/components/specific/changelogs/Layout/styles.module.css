@@ -7,5 +7,5 @@
 }
 
 .changelogContainer {
-    @apply flex flex-1 overflow-auto py-[16px]
+    @apply flex flex-1 overflow-auto py-[16px] flex-col
 }
