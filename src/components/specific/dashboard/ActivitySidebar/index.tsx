@@ -3,6 +3,7 @@ import classes from "./styles.module.css";
 import Image from "next/image";
 import clock from '@/icons/clock.svg';
 import defaultProfilePicture from '@/defaults/posterIcon.png';
+import {UserContext} from "@/contexts/UserContext";
 
 interface ActivityProps {
     title: string;
@@ -23,6 +24,8 @@ function Activity(props: ActivityProps) {
 }
 
 export default function ActivitySidebar({mode = "normal"}) {
+    const {user} = React.useContext(UserContext);
+
     return <aside className={classes.sidebar}>
         <div className={classes.header}>
             <Image src={clock} alt={"Recent activity"} className={classes.icon}/>
@@ -30,7 +33,7 @@ export default function ActivitySidebar({mode = "normal"}) {
         </div>
 
         <ul>
-            <Activity title={"Jecta"} description={"has joined Unifier! 🎉"}></Activity>
+            <Activity title={user?.displayName ?? ""} description={"has joined Unifier! 🎉"}></Activity>
         </ul>
     </aside>;
 }
