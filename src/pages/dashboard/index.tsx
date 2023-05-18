@@ -13,7 +13,7 @@ const Dashboard: NextPageWithLayout = function () {
                 <p>Let&apos;s see what the people you follow are up to today!</p>
             </div>
         </section>
-        <StatusInput></StatusInput>
+        {/*<StatusInput></StatusInput>*/}
         <PostViewer></PostViewer>
     </>;
 };
