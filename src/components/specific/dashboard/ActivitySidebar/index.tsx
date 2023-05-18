@@ -33,7 +33,8 @@ export default function ActivitySidebar({mode = "normal"}) {
         </div>
 
         <ul>
-            <Activity title={user?.displayName ?? ""} description={"has joined Unifier! 🎉"}></Activity>
+            <Activity title={user?.displayName ?? ""} description={"has joined Unifier! 🎉"}
+                      icon={user?.profilePictureUrl}></Activity>
         </ul>
     </aside>;
 }
