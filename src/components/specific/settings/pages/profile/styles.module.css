@@ -1,11 +1,11 @@
 .profilePictureSection {
-    @apply flex-row;
+	@apply flex-row;
 }
 
 .profilePictureFormContents {
-    @apply flex flex-col gap-3
+	@apply flex flex-col gap-3;
 }
 
 .profilePicture {
-    @apply rounded-full flex-none self-start
+	@apply rounded-full aspect-square flex-none self-start;
 }
