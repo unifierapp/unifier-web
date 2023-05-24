@@ -47,7 +47,7 @@ export default function SettingsLayout() {
     if (typeof settingsTab !== "string") {
         Component = AccountSettings;
     } else {
-        Component = mappings[settingsTab].element ?? AccountSettings;
+        Component = mappings[settingsTab]?.element ?? AccountSettings;
     }
 
     return <FullScreenOverlayWithCenteredItem opaqueBackdrop={false} onOuterClick={e => {
@@ -63,7 +63,7 @@ export default function SettingsLayout() {
     }}>
         <Modal>
             <Sidebar></Sidebar>
-            <Page title={mappings[settingsTab?.toString() ?? ''].title}><Component /></Page>
+            <Page title={mappings[settingsTab?.toString() ?? '']?.title}><Component /></Page>
         </Modal>
     </FullScreenOverlayWithCenteredItem>;
 }
