@@ -1,47 +1,47 @@
 .sidebar {
-    @apply w-[300px] px-[16px] pr-[18px] py-[16px] flex flex-col gap-[6px] border-r-[1px] border-primary-translucent bg-secondary-background
+	@apply w-[300px] px-[16px] pr-[18px] py-[16px] flex flex-col gap-[6px] border-r-[1px] border-primary-translucent bg-secondary-background;
 }
 
 .navigationItems {
-    @apply flex flex-col
+	@apply flex flex-col;
 }
 
 .link {
-    @apply text-secondary flex py-[10px] px-[12px] gap-[12px] items-center font-[400]
+	@apply text-secondary flex py-[10px] px-[12px] gap-[12px] items-center font-[400];
 }
 
 .activeLink {
-    @apply text-primary
+	@apply text-primary;
 }
 
 .activeLinkIcon {
-    filter: brightness(2);
+	filter: brightness(2);
 }
 
 .linkIcon {
-    @apply w-[24px] aspect-square relative;
+	@apply w-[24px] aspect-square relative;
 }
 
 .linkDescription {
-    flex: 1;
+	flex: 1;
 }
 
 .sidebarTop {
-    @apply flex py-[10px] px-[12px] gap-[12px] items-center justify-between;
+	@apply flex py-[10px] px-[12px] gap-[12px] items-center justify-between;
 }
 
 .separator {
-    @apply h-[2px] bg-primary-translucent mx-[10px] rounded-full
+	@apply h-[2px] bg-primary-translucent mx-[10px] rounded-full;
 }
 
 .account {
-    @apply rounded-[6px] outline-[1px] outline-primary-translucent outline
+	@apply rounded-[6px] outline-[1px] outline-primary-translucent outline;
 }
 
 .profilePicture {
-    @apply w-[24px] aspect-square rounded-[50%]
+	@apply w-[24px] aspect-square rounded-full;
 }
 
 .orangeToast {
-    @apply text-accent-orange;
+	@apply text-accent-orange;
 }
