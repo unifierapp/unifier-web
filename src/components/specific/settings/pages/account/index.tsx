@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import Button, { ButtonFrame } from '@/components/specific/settings/components/Button';
-import {
-    PrimaryHeading, SecondaryHeading
-} from '@/components/specific/settings/components/Heading';
+import { SecondaryHeading } from '@/components/specific/settings/components/Heading';
 import Link from '@/components/specific/settings/components/Link';
 import Section from '@/components/specific/settings/components/Section';
 import BigFormField from '@/components/ui/inputs/BigFormField';
@@ -42,7 +40,6 @@ const AccountSettings = function () {
     }
 
     return <div>
-        <PrimaryHeading>My Account</PrimaryHeading>
         <Section onSubmit={e => {
             e.preventDefault();
             changeEmail(e.currentTarget).then();

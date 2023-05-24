@@ -1,16 +1,17 @@
-import React from "react";
-import Link from "next/link";
-import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/components/Heading";
-import Section from "@/components/specific/settings/components/Section";
-import {OAuthLink} from "@/components/user/OAuthLink";
-import Grid from "@/components/specific/settings/components/Grid";
-import MastodonLinkAccountForm from "@/components/specific/settings/components/LinkAccountForms/mastodon";
-import classes from "./styles.module.css";
-import DecentralizedAccountList from "@/components/specific/settings/components/DecentralizedAccountList";
+import Link from 'next/link';
+import React from 'react';
+
+import DecentralizedAccountList from '@/components/specific/settings/components/DecentralizedAccountList';
+import Grid from '@/components/specific/settings/components/Grid';
+import { SecondaryHeading } from '@/components/specific/settings/components/Heading';
+import MastodonLinkAccountForm from '@/components/specific/settings/components/LinkAccountForms/mastodon';
+import Section from '@/components/specific/settings/components/Section';
+import { OAuthLink } from '@/components/user/OAuthLink';
+
+import classes from './styles.module.css';
 
 const ConnectionSettings = function () {
     return <div>
-        <PrimaryHeading>My Account</PrimaryHeading>
         <Section isForm={false}>
             <SecondaryHeading>Centralized Accounts</SecondaryHeading>
             <p>Manage all of your centralized social media accounts, like Twitter, Instagram or Facebook.</p>
@@ -21,7 +22,7 @@ const ConnectionSettings = function () {
                 <OAuthLink provider={"linkedin"} requiresPassword={true}></OAuthLink>
             </Grid>
             <p>Can&apos;t find what you&apos;re looking for? <Link href="/feedback"
-                                                                   className={classes.underlineLink}>Suggest a
+                className={classes.underlineLink}>Suggest a
                 platform</Link></p>
         </Section>
         <Section>

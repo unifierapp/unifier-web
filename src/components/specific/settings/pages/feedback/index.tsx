@@ -11,7 +11,6 @@ const FeedbackDialog = function () {
     const [loading, setLoading] = React.useState(false);
 
     return <div>
-        <PrimaryHeading>Send feedback</PrimaryHeading>
         <Section>
             <SecondaryHeading>Feedback</SecondaryHeading>
             <p>Feedback can really help us improve our project and help you have a better experience. It could be

@@ -42,7 +42,6 @@ const ProfileSettings = function () {
     }
 
     return <div>
-        <PrimaryHeading>My Profile</PrimaryHeading>
         <Section onSubmit={e => {
             e.preventDefault();
         }} className={classes.profilePictureSection}>
