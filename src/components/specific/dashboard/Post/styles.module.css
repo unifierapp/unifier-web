@@ -1,55 +1,56 @@
 .postContainer {
-    @apply flex p-[16px] pr-[24px] gap-[12px] border-b-[1px] border-primary-translucent
+	@apply flex p-[16px] pr-[24px] gap-[12px] border-b-[1px] border-primary-translucent;
 }
 
 .postContent {
-    @apply flex flex-col gap-[12px] w-full
+	@apply flex flex-col gap-[12px] w-full;
 }
 
 .postTextContent {
-    @apply gap-1
+	@apply gap-1;
 }
 
 .profilePicture {
-    @apply w-[50px] aspect-square rounded-full self-start
+	@apply w-[50px] h-[50px] object-cover rounded-full self-start;
 }
 
 .posterName {
-    @apply font-[600]
+	@apply font-[600];
 }
 
 .topBar {
-    @apply flex
+	@apply flex;
 }
 
 .posterInfo {
-    @apply flex gap-x-[8px] h-fit flex-1 flex-wrap
+	@apply flex gap-x-[8px] h-fit flex-1 flex-wrap;
 }
 
 .separator {
-    @apply aspect-square rounded-full bg-secondary w-1 self-center
+	@apply aspect-square rounded-full bg-secondary w-1 self-center;
 }
 
 .relativeTime {
-    @apply text-tertiary
+	@apply text-tertiary;
 }
 
 .attachmentGrid {
-    @apply grid grid-cols-1 gap-[8px]
+	@apply grid grid-cols-1 gap-[8px];
 }
 
 .attachmentGrid_2Items {
-    @apply grid-cols-2 aspect-[16/9]
+	@apply grid-cols-2 aspect-[16/9];
 }
 
-.attachmentGrid_3Items, .attachmentGrid_4Items {
-    @apply grid-cols-2 grid-rows-2
+.attachmentGrid_3Items,
+.attachmentGrid_4Items {
+	@apply grid-cols-2 grid-rows-2;
 }
 
 .stats {
-    @apply flex justify-between
+	@apply flex justify-between;
 }
 
 .postTextContentInner {
-    word-break: break-word;
+	word-break: break-word;
 }

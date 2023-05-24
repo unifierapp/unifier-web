@@ -39,7 +39,7 @@
 }
 
 .profilePicture {
-	@apply w-[24px] aspect-square rounded-full;
+	@apply w-[24px] h-[24px] object-cover rounded-full;
 }
 
 .orangeToast {
