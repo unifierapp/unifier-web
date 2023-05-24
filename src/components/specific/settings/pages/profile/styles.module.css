@@ -7,5 +7,5 @@
 }
 
 .profilePicture {
-	@apply rounded-full aspect-square flex-none self-start;
+	@apply self-start flex-none object-cover w-32 h-32 rounded-full;
 }

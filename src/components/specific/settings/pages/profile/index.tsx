@@ -8,6 +8,7 @@ import {
 } from '@/components/specific/settings/components/Heading';
 import Section from '@/components/specific/settings/components/Section';
 import { UserContext } from '@/contexts/UserContext';
+import defaultProfilePicture from '@/defaults/posterIcon.png';
 import api from '@/helpers/api';
 
 import classes from './styles.module.css';
@@ -45,7 +46,7 @@ const ProfileSettings = function () {
         <Section onSubmit={e => {
             e.preventDefault();
         }} className={classes.profilePictureSection}>
-            <Image src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128}
+            <Image src={user?.profilePictureUrl ?? defaultProfilePicture} alt={"Profile picture"} width={128} height={128}
                 className={classes.profilePicture}></Image>
             <div className={classes.profilePictureFormContents}>
                 <SecondaryHeading>Profile Picture</SecondaryHeading>
