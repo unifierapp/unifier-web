@@ -1,9 +1,11 @@
-import React from "react";
-import OriginalButton from "@/components/ui/Button";
-import classes from "./styles.module.css";
+import React from 'react';
 
-export default function Button(props: React.ComponentPropsWithoutRef<"button">) {
-    return <OriginalButton {...props} className={`${classes.button} ${props.className || ""}`}/>;
+import OriginalButton, { ButtonProps } from '@/components/ui/Button';
+
+import classes from './styles.module.css';
+
+export default function Button(props: ButtonProps) {
+    return <OriginalButton {...props} className={`${classes.button} ${props.className || ""}`} />;
 }
 
 export function ButtonFrame(props: React.PropsWithChildren) {

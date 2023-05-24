@@ -1,7 +1,7 @@
 .button {
-    @apply w-fit border-[2px] border-form-border font-[400] text-base
+	@apply w-fit border-[2px] border-form-border font-[400] text-base;
 }
 
 .buttonFrame {
-    @apply flex gap-[12px]
+	@apply flex gap-[12px];
 }

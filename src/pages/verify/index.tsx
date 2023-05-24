@@ -1,18 +1,22 @@
-import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
-import Separator from "@/components/ui/Separator";
-import classes from "./index.module.css";
-import {FormButton} from "@/components/ui/Button";
-import React from "react";
-import PrivateRoute from "@/components/user/PrivateRoute";
-import {UserContext} from "@/contexts/UserContext";
-import {useRouter} from "next/navigation";
-import {FormLink} from "@/components/ui/Link";
-import {resolveMailbox} from "@/helpers/emails";
-import api from "@/helpers/api";
+import { useRouter } from 'next/navigation';
+import React from 'react';
+
+import FullScreenOverlayWithCenteredItem from '@/components/layouts/FullScreenOverlayWithCenteredItem';
+import { FormButton } from '@/components/ui/Button';
+import { FormLink } from '@/components/ui/Link';
+import Separator from '@/components/ui/Separator';
+import PrivateRoute from '@/components/user/PrivateRoute';
+import { UserContext } from '@/contexts/UserContext';
+import api from '@/helpers/api';
+import { resolveMailbox } from '@/helpers/emails';
+
+import classes from './index.module.css';
 
 export default function Verify() {
-    const {user, refresh} = React.useContext(UserContext);
+    const { user, refresh } = React.useContext(UserContext);
     const router = useRouter();
+
+    const [loading, setLoading] = React.useState(false);
 
     // Account is verified and the user is not trying to change the email address
     React.useEffect(() => {
@@ -40,8 +44,10 @@ export default function Verify() {
                 <p>If you do not receive a message, try to request a new email.</p>
                 <Separator></Separator>
                 {resolvedMailbox ? <FormLink href={resolvedMailbox}>Go to mailbox</FormLink> : null}
-                <FormButton onClick={async () => {
+                <FormButton loading={loading} onClick={async () => {
+                    setLoading(true);
                     await api.post("/auth/resend_confirmation_email");
+                    setLoading(false);
                 }}>Resend email</FormButton>
             </div>
         </FullScreenOverlayWithCenteredItem>

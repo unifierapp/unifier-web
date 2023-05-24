@@ -20,7 +20,7 @@ export function formToPojo<T = any>(formElement: HTMLFormElement, options?: {
                     throw new Error(`The ${element.name} field is required.`);
                 }
                 result[element.name] = values;
-            } else {
+    
                 let value = undefined;
                 for (let option of Array.from(element.querySelectorAll("option"))) {
                     if (option.selected) {

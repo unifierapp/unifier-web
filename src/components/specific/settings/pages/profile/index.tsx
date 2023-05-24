@@ -1,28 +1,43 @@
-import React from "react";
-import {PrimaryHeading, SecondaryHeading} from "@/components/specific/settings/components/Heading";
-import Section from "@/components/specific/settings/components/Section";
-import Button, {ButtonFrame} from "@/components/specific/settings/components/Button";
-import {UserContext} from "@/contexts/UserContext";
-import classes from "./styles.module.css";
-import api from "@/helpers/api";
-import axios from "axios";
-import Image from "next/image";
+import axios from 'axios';
+import Image from 'next/image';
+import React, { useState } from 'react';
+
+import Button, { ButtonFrame } from '@/components/specific/settings/components/Button';
+import {
+    PrimaryHeading, SecondaryHeading
+} from '@/components/specific/settings/components/Heading';
+import Section from '@/components/specific/settings/components/Section';
+import { UserContext } from '@/contexts/UserContext';
+import api from '@/helpers/api';
+
+import classes from './styles.module.css';
 
 const ProfileSettings = function () {
-    const {user, refresh} = React.useContext(UserContext);
+    const [changeProfilePictureLoading, setChangeProfilePictureLoading] = useState(false);
+    const [deleteProfilePictureLoading, setDeleteProfilePictureLoading] = useState(false);
+
+    const { user, refresh } = React.useContext(UserContext);
     const inputRef = React.useRef<HTMLInputElement | null>(null);
 
     async function changeProfilePicture(profilePicture: File) {
+        setChangeProfilePictureLoading(true);
+
         const data = axios.toFormData({
             profile_picture: profilePicture,
         });
         await api.post("/user/profile_picture", data);
         await refresh();
+
+        setChangeProfilePictureLoading(false);
     }
 
     async function deleteProfilePicture() {
+        setDeleteProfilePictureLoading(true);
+
         await api.delete("/user/profile_picture");
         await refresh();
+
+        setDeleteProfilePictureLoading(false);
     }
 
     return <div>
@@ -31,7 +46,7 @@ const ProfileSettings = function () {
             e.preventDefault();
         }} className={classes.profilePictureSection}>
             <Image src={user?.profilePictureUrl ?? ""} alt={"Profile picture"} width={128} height={128}
-                   className={classes.profilePicture}></Image>
+                className={classes.profilePicture}></Image>
             <div className={classes.profilePictureFormContents}>
                 <SecondaryHeading>Profile Picture</SecondaryHeading>
                 <p>Your profile picture is displayed everywhere, and helps identify you. Go ahead and put on a bright
@@ -42,13 +57,13 @@ const ProfileSettings = function () {
                         changeProfilePicture(files[0]).then();
                         e.currentTarget.value = "";
                     }
-                }} name={"profile_picture"} accept={"image/jpeg,image/png"}/>
+                }} name={"profile_picture"} accept={"image/jpeg,image/png"} />
                 <ButtonFrame>
-                    <Button onClick={e => {
+                    <Button loading={changeProfilePictureLoading} onClick={e => {
                         e.preventDefault();
                         inputRef.current?.click();
                     }}>Change</Button>
-                    {user?.profilePictureUrl ? <Button onClick={e => {
+                    {user?.profilePictureUrl ? <Button loading={deleteProfilePictureLoading} onClick={e => {
                         e.preventDefault();
                         deleteProfilePicture().then();
                     }}>Delete</Button> : null}

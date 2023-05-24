@@ -1,25 +1,30 @@
-import {formToJSON} from "axios";
-import api from "@/helpers/api";
-import FullScreenOverlayWithCenteredItem from "@/components/layouts/FullScreenOverlayWithCenteredItem";
-import person from "@/icons/profile.svg";
-import lock from "@/icons/lock.svg";
-import Button from "@/components/specific/settings/components/Button";
-import React from "react";
-import warn from "@/icons/warn.svg";
-import SmallFormField from "@/components/ui/inputs/SmallFormField";
-import classes from "./styles.module.css";
-import {UserContext} from "@/contexts/UserContext";
-import Image from "next/image";
+import { formToJSON } from 'axios';
+import Image from 'next/image';
+import React from 'react';
+
+import FullScreenOverlayWithCenteredItem from '@/components/layouts/FullScreenOverlayWithCenteredItem';
+import Button from '@/components/specific/settings/components/Button';
+import SmallFormField from '@/components/ui/inputs/SmallFormField';
+import { UserContext } from '@/contexts/UserContext';
+import api from '@/helpers/api';
+import lock from '@/icons/lock.svg';
+import person from '@/icons/profile.svg';
+import warn from '@/icons/warn.svg';
+
+import classes from './styles.module.css';
 
 export default function LinkAccountModal(props: {
     provider: string,
     endpoint?: string,
     onOuterClick: () => void,
 }) {
+    const [loading, setLoading] = React.useState(false);
 
-    const {refresh} = React.useContext(UserContext);
+    const { refresh } = React.useContext(UserContext);
 
     async function login(form: HTMLFormElement) {
+        setLoading(true);
+
         const data = formToJSON(form);
         await api.post(`/auth/${props.provider}`, data, {
             params: {
@@ -28,23 +33,25 @@ export default function LinkAccountModal(props: {
         });
         await refresh();
         props.onOuterClick?.();
+
+        setLoading(false);
     }
 
     return <FullScreenOverlayWithCenteredItem className={classes.linkAccountOverlay} opaqueBackdrop={false}
-                                              onOuterClick={() => {
-                                                  props.onOuterClick?.();
-                                              }}>
+        onOuterClick={() => {
+            props.onOuterClick?.();
+        }}>
         <form onSubmit={e => {
             e.preventDefault();
             login(e.currentTarget).then();
         }} className={classes.linkAccountModal}>
             <SmallFormField className={classes.signInField} icon={person} label={"Username"} name={"username"}
-                            type={"username"}></SmallFormField>
+                type={"username"}></SmallFormField>
             <SmallFormField className={classes.signInField} icon={lock} label={"Password"} name={"password"}
-                            type={"password"}></SmallFormField>
-            <Button type={"submit"} className={classes.loginButton}>Sign in</Button>
+                type={"password"}></SmallFormField>
+            <Button loading={loading} type={"submit"} className={classes.loginButton}>Sign in</Button>
             <div className={classes.warning}>
-                <Image src={warn} alt={"Warning"} className={classes.warnIcon}/>
+                <Image src={warn} alt={"Warning"} className={classes.warnIcon} />
                 <div className={classes.warnText}>
                     <strong className={classes.focus}>Use this feature with discretion as it can cause suspension of
                         your

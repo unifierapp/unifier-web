@@ -1,7 +1,7 @@
 .overlay {
-    @apply fixed w-full h-full flex justify-center items-center top-0 left-0
+	@apply fixed top-0 left-0 flex items-center justify-center w-full h-full backdrop-blur;
 }
 
 .opaque {
-    @apply bg-background
+	@apply bg-background;
 }
