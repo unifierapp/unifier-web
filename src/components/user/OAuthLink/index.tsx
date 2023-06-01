@@ -15,6 +15,7 @@ import {UserContext} from "@/contexts/UserContext";
 import api from "@/helpers/api";
 import Image, {StaticImageData} from "next/image";
 import LinkAccountModal from "@/components/specific/settings/components/LinkAccountModal";
+import {ReactSVG} from "react-svg";
 
 const icon_mapping: Record<string, StaticImageData> = {
     twitter: twitter,
@@ -57,7 +58,7 @@ export function OAuthLink({
 
     if (decentralized) {
         const linkInner = <>
-            <Image src={icon} alt={provider}/>
+            <ReactSVG src={icon.src}/>
             Link a new {capitalize(provider)} account
         </>;
         if (!endpoint) {
@@ -75,7 +76,7 @@ export function OAuthLink({
     } else if (!lookup.linked) {
         if (requiresPassword) {
             return <div className={classes.oAuthLink}>
-                <Image src={icon} alt={provider}/>
+                <ReactSVG src={icon.src}/>
                 Link your {capitalize(provider)} account
                 <Button onClick={(e) => {
                     e.preventDefault();
@@ -85,7 +86,7 @@ export function OAuthLink({
             </div>;
         } else {
             return <div className={classes.oAuthLink}>
-                <Image src={icon} alt={provider}/>
+                <ReactSVG src={icon.src}/>
                 Link your {capitalize(provider)} account
                 <LinkLayer href={getBackendUrl(`/auth/${provider}`)}></LinkLayer>
             </div>;
@@ -94,7 +95,7 @@ export function OAuthLink({
         const unlinkUrl = new URL(getBackendUrl(`/provider/unlink`));
         unlinkUrl.searchParams.set("provider", provider);
         return <div className={classes.oAuthLink}>
-            <Image src={icon} alt={provider}/>
+            <ReactSVG src={icon.src}/>
             <span className={classes.description}>Signed in as {lookup.displayName}</span>
             <button onClick={(e) => {
                 e.preventDefault();

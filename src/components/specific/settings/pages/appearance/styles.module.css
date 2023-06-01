@@ -1,0 +1,19 @@
+.themeButton {
+    @apply p-[16px] pb-[8px] flex flex-col rounded-[8px] gap-2.5 border-[2px] border-primary-translucent w-full
+}
+
+.themeButtons {
+    @apply flex items-stretch gap-x-[32px] gap-y-4 justify-between flex-col lg:flex-row
+}
+
+.themeButtonContainer {
+    @apply w-full flex-1
+}
+
+.focusedThemeButton {
+    @apply bg-primary-translucent
+}
+
+.image {
+    @apply w-full
+}

@@ -1,18 +1,19 @@
 import Toast from "@/components/ui/Toast";
 import Logo from "@/components/ui/Logo";
-import feed from "@/icons/feed.svg";
-import profile from "@/icons/profile.svg";
-import settings from "@/icons/settings.svg";
-import changelogs from "@/icons/announcements.svg";
-import logout from "@/icons/logout.svg";
+import feed from "@/icons/main/home.svg";
+import profile from "@/icons/main/person.svg";
+import settings from "@/icons/main/settings.svg";
+import changelogs from "@/icons/main/megaphone.svg";
+import logout from "@/icons/main/log-out.svg";
 import Link from "next/link";
 import React from "react";
 import {usePathname} from 'next/navigation';
-import classes from "./styles.module.css";
 import {UserContext} from "@/contexts/UserContext";
 import {useRouter} from "next/router";
 import {UrlObject} from "url";
 import Image, {StaticImageData} from "next/image";
+import {ReactSVG} from "react-svg";
+import classes from "./styles.module.css";
 
 interface SidebarLinkProps {
     href: string | UrlObject,
@@ -89,8 +90,7 @@ function SidebarLink(props: SidebarLinkProps) {
         }
     }}
                  className={`${classes.link} ${active ? classes.activeLink : ""}`}>
-        <Image src={props.icon} alt={props.description}
-               className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
+        <ReactSVG src={props.icon.src} className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
         <span className={classes.linkDescription}>{props.description}</span>
         {toast}
     </Link>;

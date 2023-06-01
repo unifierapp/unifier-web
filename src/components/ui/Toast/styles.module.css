@@ -3,6 +3,9 @@
 }
 
 .toastText {
-    @apply text-current;
-    filter: brightness(1.5) saturate(0.5);
+    @apply text-current brightness-50;
+}
+
+:global(.darkMode) .toastText {
+    @apply brightness-100 saturate-[50%]
 }

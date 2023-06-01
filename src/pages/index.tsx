@@ -12,17 +12,21 @@ import linkedin from "@/icons/providers/linkedin.svg";
 import Image from "next/image";
 import Background from "@/components/specific/screens/Background";
 import classes from "./landing.module.css";
+import {ReactSVG} from "react-svg";
+import {MediaContext} from "@/contexts/MediaContext";
 
 
 const SUPPORTED_PROVIDER_ICONS = [
-    {name: "Atlis", icon: atlis},
+    // {name: "Atlis", icon: atlis},
     {name: "Twitter", icon: twatter},
     {name: "Mastodon", icon: mastodon},
-    {name: "Facebook", icon: facebook},
+    // {name: "Facebook", icon: facebook},
     {name: "Linkedin", icon: linkedin}
 ];
 
 export default function LandingPage() {
+    const {isDarkMode} = React.useContext(MediaContext);
+
     return (
         <>
             <Background></Background>
@@ -52,13 +56,14 @@ export default function LandingPage() {
                         </p>
                         <div className={classes.heroButtonFrame}>
                             <CustomLink href={"/signup"} className={classes.heroLink}>Sign Up</CustomLink>
-                            <CustomLink href={"/about"} className={`${classes.heroLink} ${classes.focusedHeroLink}`}>Learn
+                            <CustomLink href={"/about"}
+                                        className={`${classes.heroLink} ${classes.focusedHeroLink} ${isDarkMode ? "" : classes.lightModeLink}`}>Learn
                                 More</CustomLink>
                         </div>
                         <ul className={classes.providerIconFrame}>
                             {SUPPORTED_PROVIDER_ICONS.map(icon => {
-                                return <li key={icon.icon.src}><Image className={classes.providerIcon} src={icon.icon}
-                                                                      alt={icon.name}/>
+                                return <li key={icon.icon.src}><ReactSVG className={classes.providerIcon}
+                                                                         src={icon.icon.src}/>
                                 </li>;
                             })}
                         </ul>

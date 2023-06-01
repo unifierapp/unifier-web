@@ -1,11 +1,11 @@
-import logo from "@/icons/logo.svg";
-import classes from "./styles.module.css";
+import logo from "@/icons/branding/logo.svg";
 import Link from "next/link";
-import Image from "next/image";
+import {ReactSVG} from "react-svg";
+import classes from "./styles.module.css";
 
 export default function Logo({href, className}: { href?: string, className?: string }) {
     return <Link href={href ?? "/dashboard"} className={`${classes.logo} ${className || ""}`}>
-        <Image src={logo} alt={"Unifier"} className={classes.logoImage}/>
+        <ReactSVG src={logo.src} className={classes.logoImage}/>
         <span className={classes.logoText}>Unifier</span>
     </Link>;
 }

@@ -60,7 +60,11 @@
 }
 
 .focusedHeroLink {
-    @apply bg-form-border
+    @apply bg-form-border text-primary
+}
+
+.lightModeLink {
+    @apply text-background
 }
 
 .providerIconFrame {

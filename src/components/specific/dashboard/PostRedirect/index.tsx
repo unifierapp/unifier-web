@@ -3,6 +3,7 @@ import twitter from "@/icons/providers/twitter.svg";
 import mastodon from "@/icons/providers/mastodon.svg";
 import instagram from "@/icons/providers/instagram.svg";
 import Image, {StaticImageData} from "next/image";
+import {ReactSVG} from "react-svg";
 
 export interface PostRedirectProps {
     provider: string;
@@ -33,7 +34,7 @@ export default function PostRedirect(props: PostRedirectProps) {
 
     const data = mapping[props.provider];
     if (!data) return <div></div>;
-    return <a href={data.url}>
-        <Image src={data.icon} alt={`View post on ${props.provider.toUpperCase()}`}></Image>
+    return <a href={data.url} title={`View post on ${props.provider.toUpperCase()}`}>
+        <ReactSVG src={data.icon.src}></ReactSVG>
     </a>;
 }

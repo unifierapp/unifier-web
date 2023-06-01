@@ -8,5 +8,10 @@
 }
 
 .logoImage {
-    @apply w-[32px]
+    @apply w-[32px] h-[32px]
+}
+
+.logoImage svg {
+    width: 100%;
+    height: 100%;
 }

@@ -1,18 +1,17 @@
 import Toast from "@/components/ui/Toast";
-import profile from "@/icons/profile.svg";
-import eye from "@/icons/eye.svg";
-import paintbrush from "@/icons/paintbrush.svg";
-import squares from "@/icons/squares.svg";
-import chat from "@/icons/chat.svg";
-import money from "@/icons/money.svg";
-import voucher from "@/icons/voucher.svg";
-import notifications from "@/icons/notifications.svg";
+import profile from "@/icons/main/person.svg";
+import eye from "@/icons/main/eye.svg";
+import paintbrush from "@/icons/main/brush.svg";
+import squares from "@/icons/main/squares.svg";
+import chat from "@/icons/main/chats.svg";
+import voucher from "@/icons/main/ticket.svg";
 import Link from "next/link";
 import React from "react";
 import {useSearchParams} from 'next/navigation';
 import classes from "./styles.module.css";
 import {useRouter} from "next/router";
 import Image, {StaticImageData} from "next/image";
+import {ReactSVG} from "react-svg";
 
 interface SidebarLinkProps {
     id: string,
@@ -84,8 +83,8 @@ function SidebarLink(props: SidebarLinkProps) {
             }
         }} as={`/settings/${props.id}`} shallow={true}
               className={`${classes.link} ${active ? classes.activeLink : ""}`}>
-            <Image src={props.icon} alt={props.description}
-                   className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
+            <ReactSVG src={props.icon.src}
+                      className={`${classes.linkIcon} ${active ? classes.activeLinkIcon : ""}`}/>
             <span className={classes.linkDescription}>{props.description}</span>
             {toast}
         </Link>

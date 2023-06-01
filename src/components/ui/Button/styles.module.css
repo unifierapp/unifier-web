@@ -1,11 +1,11 @@
 .button {
-	@apply px-[16px] py-[8px] text-sm rounded-[8px] border-primary-translucent border-[1px] font-[600] hover:bg-primary-translucent flex items-center gap-2;
+    @apply px-[16px] py-[8px] text-sm rounded-[8px] border-primary-translucent border-[1px] font-[600] hover:bg-primary-translucent flex items-center gap-2;
 }
 
 .formButton {
-	@apply font-[400] border-[2px] border-form-border hover:bg-form-border flex items-center gap-2;
+    @apply font-[400] border-[2px] border-form-border hover:bg-form-border justify-center flex items-center gap-2;
 }
 
 .spinner {
-	@apply inline w-5 h-5 -mt-0.5 text-gray-200 animate-spin dark:text-form-border fill-white;
+    @apply inline w-5 h-5 -mt-0.5 text-gray-200 animate-spin dark:text-form-border fill-white;
 }

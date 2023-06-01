@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import React from 'react';
 
 import FullScreenOverlayWithCenteredItem from '@/components/layouts/FullScreenOverlayWithCenteredItem';
@@ -11,6 +11,7 @@ import DeleteAccount from '@/components/specific/settings/pages/deleteAccount';
 import FeedbackDialog from '@/components/specific/settings/pages/feedback';
 import InviteSettings from '@/components/specific/settings/pages/invites';
 import ProfileSettings from '@/components/specific/settings/pages/profile';
+import AppearanceSettings from "@/components/specific/settings/pages/appearance";
 
 export default function SettingsLayout() {
     const router = useRouter();
@@ -27,11 +28,16 @@ export default function SettingsLayout() {
             element: ProfileSettings
         },
         connections: {
+            title: "My Connections",
             element: ConnectionSettings
         },
         invites: {
             title: "Invite people",
             element: InviteSettings
+        },
+        appearance: {
+            title: "Appearance",
+            element: AppearanceSettings
         },
         feedback: {
             title: "Send feedback",
@@ -63,7 +69,7 @@ export default function SettingsLayout() {
     }}>
         <Modal>
             <Sidebar></Sidebar>
-            <Page title={mappings[settingsTab?.toString() ?? '']?.title}><Component /></Page>
+            <Page title={mappings[settingsTab?.toString() ?? '']?.title}><Component/></Page>
         </Modal>
     </FullScreenOverlayWithCenteredItem>;
 }
