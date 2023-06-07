@@ -41,10 +41,10 @@ export default function AppearanceSettings() {
             onClick: () => setIsUserDark(false),
         },
         {
-            active: isUserDark === undefined,
+            active: isUserDark === null,
             image: darkMode,
             desc: "System default",
-            onClick: () => setIsUserDark(undefined),
+            onClick: () => setIsUserDark(null),
         }
     ];
 

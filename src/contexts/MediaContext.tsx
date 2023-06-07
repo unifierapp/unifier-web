@@ -3,20 +3,20 @@ import classes from './MediaContext.module.css';
 
 export interface MediaContextInfo {
     isDarkMode: boolean;
-    isUserDark?: boolean;
-    setIsUserDark: (data?: boolean) => void;
+    isUserDark: boolean | null;
+    setIsUserDark: (data: boolean | null) => void;
 }
 
 export const MediaContext = React.createContext<MediaContextInfo>({
     isDarkMode: false,
-    isUserDark: undefined,
+    isUserDark: null,
     setIsUserDark: () => {
     },
 });
 
 export function MediaWrapper(props: PropsWithChildren) {
     const [isMediaDark, setIsMediaDark] = React.useState<boolean>(true);
-    const [isUserDark, setIsUserDark] = React.useState<boolean | undefined>(() => undefined);
+    const [isUserDark, setIsUserDark] = React.useState<boolean | null>(() => null);
 
     React.useEffect(() => {
         function change(e: MediaQueryListEvent) {
@@ -39,11 +39,15 @@ export function MediaWrapper(props: PropsWithChildren) {
     }, [isDarkMode]);
 
     React.useEffect(() => {
-        const stringVal = localStorage.getItem("darkMode");
-        if (stringVal !== null) {
-            setIsUserDark(JSON.parse(stringVal));
-        } else {
-            setIsUserDark(undefined);
+        try {
+            const stringVal = localStorage.getItem("darkMode");
+            if (stringVal !== null) {
+                setIsUserDark(JSON.parse(stringVal));
+            } else {
+                setIsUserDark(null);
+            }
+        } catch (e) {
+            setIsUserDark(null);
         }
     }, []);
 
