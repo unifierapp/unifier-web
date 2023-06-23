@@ -47,7 +47,7 @@ const AccountSettings = function () {
             <SecondaryHeading>Email</SecondaryHeading>
             <p>Your email helps the system identify your account. Changing the email will disable quick sign in with
                 Google on the current email.</p>
-            <BigFormField placeholder={"example@example.com"} type={"email"} name={"email"}></BigFormField>
+            <BigFormField placeholder={user.email} type={"email"} name={"email"}></BigFormField>
             <ButtonFrame><Button loading={changeEmailLoading}>Change</Button></ButtonFrame>
         </Section>
         <Section onSubmit={e => {
